@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Barlow', sans-serif;
+
+}
+
+
+.spacing{
+	padding: 20px !important
+}
+
+.date-style{
+	border: 1px medium black !important;
+	border-bottom: 1px medium black;
+	border-radius: 10px !important;
+	box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 3px 0 rgb(0 0 0 / 10%);
+}
+
+.butons{
+	margin-bottom: 10px;
+}
+
+.txt{
+	font-size: 14px;
+}

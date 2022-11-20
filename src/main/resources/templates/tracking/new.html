@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+
+  <!-- Importante para que sea responsive-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Importante para que sea responsive-->
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+          crossorigin="anonymous"></script>
+
+  <title>$Title$</title>
+</head>
+<body>
+<div layout:fragment="dashboardU">
+  <h3>Seguimiento envio</h3>
+  <form th:action="@{/tracking/save}" th:object="${tracking}" method="post">
+    <label>Referencia:</label>
+    <input type="text" class="form-control" th:field="*{ref}"><br>
+    <label>Destino:</label>
+    <input type="text" class="form-control" th:field="*{destination}"><br>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+</body>
+</html>

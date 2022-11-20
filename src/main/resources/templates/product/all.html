@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Cantidad</th>
+      <th>Estado</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each=" product: ${products}">
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.category}"></td>
+      <td th:text="${product.quantity}"></td>
+      <td th:text="${product.state}"></td>
+      <td th:text="${product.price}"></td>
+      <td>
+        <a class="btn btn-primary" th:href="@{'/product/update/' + ${product.id}}">Edit</a>
+        <a class="btn btn-danger" th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

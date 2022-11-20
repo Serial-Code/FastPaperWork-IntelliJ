@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboardU">
+  <h3>Actualizar Referencia</h3>
+  <form th:action="@{'/tracking/update/' + ${tracking.id}}" th:object="${tracking}" method="post">
+    <label>Referencia:</label>
+    <input type="text" class="form-control" th:field="*{ref}"><br>
+    <label>Destino:</label>
+    <input type="text" class="form-control" th:field="*{destination}"><br>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+</body>
+</html>
