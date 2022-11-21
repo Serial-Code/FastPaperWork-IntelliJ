@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <td>Fecha</td>
+      <td>Puntuación</td>
+      <td>Acciones</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="calificacion: ${calificacion}">
+      <td th:text="${calificacion.fecha}"></td>
+      <td th:text="${calificacion.puntuacion}"></td>
+      <td>
+        <a class="btn btn-info" th:href="@{'/calificacion/new/'">Crear</a>
+        <a class="btn btn-info" th:href="@{'/calificacion/update/' + ${calificacion.id}}">Editar</a>
+        <a class="btn btn-danger" th:href="@{'/calificacion/delete/' + ${calificacion.id}}">Eliminar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
