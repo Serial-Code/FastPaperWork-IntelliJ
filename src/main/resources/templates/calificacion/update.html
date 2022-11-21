@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h3>Actualizar Calificación</h3>
+    <form th:action="@{'/calificacion/update/' + ${calificacion.id}}" th:object="${venta}" method="post">
+        <label>Fecha:</label>
+        <input type="date" class="form-control" th:field="*{fecha}"><br>
+        <label>puntuacion:</label>
+        <input type="text" class="form-control" th:field="*{puntuacion}"><br>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+</body>
+</html>

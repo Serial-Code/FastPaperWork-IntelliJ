@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h3>Nuevo Proveedor</h3>
+    <form th:action="@{/proveedor/save}" th:object="${proveedor}" method="post">
+        <label>RUT:</label>
+        <input type="number" class="form-control" th:field="*{RUT}"><br>
+        <label>Primer Nombre:</label>
+        <input type="text" class="form-control" th:field="*{primer_nombre}"><br>
+        <label>Segundo Nombre:</label>
+        <input type="text" class="form-control" th:field="*{segundo_nombre}"><br>
+        <label>Primer Apellido:</label>
+        <input type="text" class="form-control" th:field="*{primer_apellido}"><br>
+        <label>Segundo Apellido:</label>
+        <input type="text" class="form-control" th:field="*{segundo_apellido}"><br>
+        <label>Telefono:</label>
+        <input type="number" class="form-control" th:field="*{telefono}"><br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

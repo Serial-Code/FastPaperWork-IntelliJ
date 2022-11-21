@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboardU">
+    <h3>Nuevo Pedido</h3>
+    <form th:action="@{/pqrs/save}" th:object="${pqrs}" method="post">
+        <label>Tipo:</label>
+        <input type="text" class="form-control" th:field="*{tipo}"><br>
+        <label>Descripción:</label>
+        <input type="text" class="form-control" th:field="*{descripcion}"><br>
+        <label>Fecha:</label>
+        <input type="date" class="form-control" th:field="*{fecha}"><br>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

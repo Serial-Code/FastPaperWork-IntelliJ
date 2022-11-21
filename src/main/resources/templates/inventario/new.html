@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h3>Nuevo</h3>
+    <form th:action="@{/inventario/save}" th:object="${inventario}" method="post">
+        <label>Categoria:</label>
+        <input type="text" class="form-control" th:field="*{categoria}"><br>
+        <label>Entradas:</label>
+        <input type="number" class="form-control" th:field="*{entradas}"><br>
+        <label>Salidas:</label>
+        <input type="number" class="form-control" th:field="*{salidas}"><br>
+        <label>Descripción:</label>
+        <input type="text" class="form-control" th:field="*{descripcion}"><br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h3>Actualizar Pedido</h3>
+    <form th:action="@{'/pedido/update/' + ${pedido.id}}" th:object="${pedido}" method="post">
+        <label>cantidad:</label>
+        <input type="text" class="form-control" th:field="*{cantidad}"><br>
+        <label>Fecha:</label>
+        <input type="date" class="form-control" th:field="*{fecha}"><br>
+        <label>direccion:</label>
+        <input type="text" class="form-control" th:field="*{direccion}"><br>
+        <label>descuento:</label>
+        <input type="number" class="form-control" th:field="*{descuento}"><br>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+</body>
+</html>
