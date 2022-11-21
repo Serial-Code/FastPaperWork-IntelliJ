@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h3>Nueva Respuesta</h3>
+    <form th:action="@{/respuesta/save}" th:object="${respuesta}" method="post">
+        <label>Respuesta:</label>
+        <input type="text" class="form-control" th:field="*{respuesta}"><br>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+</body>
+</html>

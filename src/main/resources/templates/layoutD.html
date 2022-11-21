@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <!-- Importante para que sea responsive-->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -50,10 +50,35 @@
         <li sec:authorize="isAuthenticated()" class="nav-link">
           <a th:href="@{/product/all}" target="Principal">
             <i class="fa-solid fa-house icon"></i>
-            <span class="text nav-text">Product</span>
+            <span class="text nav-text">Producto</span>
+          </a>
+        </li>
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/inventario/all}" target="Principal">
+            <i class="fa-solid fa-clipboard"></i>
+            <span class="text nav-text">Inventario</span>
+          </a>
+
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/proveedor/all}" target="Principal">
+            <i class="fa-solid fa-truck"></i>
+            <span class="text nav-text">Proveedor</span>
           </a>
         </li>
 
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/venta/all}" target="Principal">
+            <i class="fa-solid fa-tag"></i>
+            <span class="text nav-text">Venta</span>
+          </a>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/respuesta/all}" target="Principal">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="text nav-text">Respuesta</span>
+          </a>
+        </li>
 
       </ul>
     </div>

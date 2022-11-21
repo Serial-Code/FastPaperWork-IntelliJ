@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <!-- Importante para que sea responsive-->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,6 +51,12 @@
           </a>
         </li>
 
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/pqrs/all}">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <span class="text nav-text">PQRS</span>
+          </a>
+        </li>
 
       </ul>
     </div>
