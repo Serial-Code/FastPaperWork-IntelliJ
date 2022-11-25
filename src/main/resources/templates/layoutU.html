@@ -57,6 +57,12 @@
             <span class="text nav-text">PQRS</span>
           </a>
         </li>
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/calificacion/all}">
+            <i class="fa-solid fa-badge-check"></i>
+            <span class="text nav-text">Calificación</span>
+          </a>
+        </li>
 
       </ul>
     </div>

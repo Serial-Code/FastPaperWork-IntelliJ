@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
@@ -24,7 +25,7 @@ public class Proveedor {
     private String primer_apellido;
     @Column(length = 50, nullable = false)
     private String segundo_apellido;
-    @Column(length = 50, nullable = false)
+    @Column(length = 10, nullable = false)
     private int telefono;
 
 }

@@ -21,7 +21,7 @@
         <label>Segundo Apellido:</label>
         <input type="text" class="form-control" th:field="*{segundo_apellido}"><br>
         <label>Telefono:</label>
-        <input type="number" class="form-control" th:field="*{telefono}"><br>
+        <input maxlength="10" type="number" class="form-control" th:field="*{telefono}"><br>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
