@@ -5,10 +5,12 @@ import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,7 +33,10 @@ public class ProductViewController {
     }
 
     @PostMapping("/product/save")
-    public String newProduct(Product product){
+    public String newProduct(@Valid Product product, BindingResult result){
+        if (result.hasErrors()){
+            return "/product/new";
+        }
         productService.save(product);
         return "redirect:/product/all";
     }

@@ -25,8 +25,6 @@ public class Calificacion {
     private Date fecha;
 
 
-
-
     @Column(length = 50, nullable = false)
     private int puntuacion;
 }
