@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
+import com.example.demo.service.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class ProductViewController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProveedorService proveedorService;
+
     @GetMapping("/product/all")
     public String getProducts(Model model) {
         List<Product> products = productService.getProducts();
@@ -29,6 +33,7 @@ public class ProductViewController {
     @GetMapping("/product/new")
     public String showNewProduct(Model model){
         model.addAttribute("product", new Product());
+        model.addAttribute("proveedores", proveedorService.getProveedores());
         return "product/new";
     }
 
@@ -44,6 +49,7 @@ public class ProductViewController {
     @GetMapping("/product/update/{id}")
     public String showUpdateProduct(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.getProduct(id));
+        model.addAttribute("proveedores", proveedorService.getProveedores());
         return "product/update";
     }
 

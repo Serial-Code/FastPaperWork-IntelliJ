@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layoutD}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div layout:fragment="content">
+<div layout:fragment="dashboard">
     <h3>Update Supplier</h3>
     <form th:action="@{'/product/update/' + ${product.id}}" th:object="${product}" method="post">
         <label>Name:</label>
@@ -20,6 +20,12 @@
         <input type="text" class="form-control" th:field="*{state}"><br>
         <label>Price:</label>
         <input type="text" class="form-control" th:field="*{price}"><br>
+        <select th:field="*{proveedor}">
+            <th:block th:each="proveedor: ${proveedores}">
+                <option th:text="${proveedor.primer_nombre}" th:value="${proveedor.id}"></option>
+            </th:block>
+        </select>
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
