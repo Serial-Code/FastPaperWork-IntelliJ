@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "proveedor")
@@ -18,14 +19,24 @@ public class Proveedor {
 
     @Column(length = 50, nullable = false)
     private Integer RUT;
+
+    @NotEmpty(message = "El campo nombre no puede ser vacio")
+    @Column(length = 50, nullable = false)
     private String primer_nombre;
+
+    @NotEmpty(message = "El campo nombre no puede ser vacio")
     @Column(length = 50, nullable = false)
     private String segundo_nombre;
+
+    @NotEmpty(message = "El campo apellido no puede ser vacio")
     @Column(length = 50, nullable = false)
     private String primer_apellido;
+
+    @NotEmpty(message = "El campo apellido no puede ser vacio")
     @Column(length = 50, nullable = false)
     private String segundo_apellido;
-    @Column(length = 10, nullable = false)
-    private int telefono;
+
+    @Column(name = "telefono", length = 10, nullable = false)
+    private Integer telefono;
 
 }

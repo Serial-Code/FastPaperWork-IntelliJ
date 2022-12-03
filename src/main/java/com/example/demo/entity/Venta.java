@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 @Entity
@@ -17,12 +19,20 @@ public class Venta {
     @Column(name = "idventa", unique = true)
     private Long id;
 
-    @Column(length = 50, nullable = false)
+    @Column
     private Date fecha;
-    @Column(length = 50, nullable = false)
+
+    @Column
     private int cantidad;
+
+    @NotEmpty(message = "El campo descripción no puede ser vacio")
     @Column(columnDefinition = "text")
     private String detalle;
-    @Column(length = 50, nullable = false)
-    private double total;
+
+    @Column
+    private Double total;
+
+    @ManyToOne
+    @JoinColumn(name = "idproduct")
+    private Proveedor product;
 }

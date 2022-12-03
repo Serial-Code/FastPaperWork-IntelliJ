@@ -8,7 +8,7 @@
 </head>
 <body>
 <div layout:fragment="dashboard">
-    <h3>New Supplier</h3>
+    <h3>New Product</h3>
     <form th:action="@{/product/save}" th:object="${product}" method="post">
         <label>Name:</label>
         <input type="text" id="name" class="form-control" th:field="*{name}" required><br>
@@ -31,6 +31,12 @@
         <input type="text" id="price" class="form-control" th:field="*{price}" required><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 
+
+        <select th:field="*{proveedor}">
+            <th:block th:each="proveedor: ${proveedores}">
+                <option th:text="${proveedor.primer_nombre}" th:value="${proveedor.id}"></option>
+            </th:block>
+        </select>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

@@ -16,19 +16,22 @@
       <th>Cantidad</th>
       <th>Estado</th>
       <th>Precio</th>
+      <td>Proveedor</td>
       <th>Acciones</th>
 
     </tr>
     </thead>
     <tbody>
+    <a class="btn btn-info" th:href="@{'/product/new/'}">Crear</a>
+
     <tr th:each=" product: ${products}">
       <td th:text="${product.name}"></td>
       <td th:text="${product.category}"></td>
       <td th:text="${product.quantity}"></td>
       <td th:text="${product.state}"></td>
       <td th:text="${product.price}"></td>
+      <td th:text="${product.proveedor.primer_nombre}"></td>
       <td>
-        <a class="btn btn-info" th:href="@{'/product/new/'}">Crear</a>
         <a class="btn btn-primary" th:href="@{'/product/update/' + ${product.id}}">Edit</a>
         <a class="btn btn-danger" th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
       </td>

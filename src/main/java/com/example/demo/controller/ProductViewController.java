@@ -36,8 +36,10 @@ public class ProductViewController {
     @Autowired
     private ProveedorService proveedorService;
 
+
     @Autowired
     private ReportProductService reportProductService;
+
 
     @GetMapping("/product/all")
     public String getProducts(Model model) {
@@ -51,6 +53,7 @@ public class ProductViewController {
     @GetMapping("/product/new")
     public String showNewProduct(Model model){
         model.addAttribute("product", new Product());
+        model.addAttribute("proveedores", proveedorService.getProveedores());
         return "product/new";
     }
 
@@ -66,6 +69,7 @@ public class ProductViewController {
     @GetMapping("/product/update/{id}")
     public String showUpdateProduct(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.getProduct(id));
+        model.addAttribute("proveedores", proveedorService.getProveedores());
         return "product/update";
     }
 

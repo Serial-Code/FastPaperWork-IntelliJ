@@ -15,17 +15,19 @@
     <td>Entradas</td>
     <td>Salidas</td>
     <td>Descripción</td>
+    <td>Producto</td>
     <th>Acciones</th>
   </tr>
   </thead>
   <tbody>
+  <a class="btn btn-success" th:href="@{/inventario/new}">Crear</a>
   <tr th:each="inventario: ${inventarios}">
     <td th:text="${inventario.categoria}"></td>
     <td th:text="${inventario.entradas}"></td>
     <td th:text="${inventario.salidas}"></td>
     <td th:text="${inventario.descripcion}"></td>
+    <td th:text="${inventario.product.name}"></td>
     <td>
-      <a class="btn btn-success" th:href="@{/inventario/new}">Crear</a>
       <a class="btn btn-info" th:href="@{'/inventario/update/' + ${inventario.id}}">Editar</a>
       <a class="btn btn-danger" th:href="@{'/inventario/delete/' + ${inventario.id}}">Eliminar</a>
     </td>

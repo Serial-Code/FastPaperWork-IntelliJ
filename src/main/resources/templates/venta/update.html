@@ -4,7 +4,7 @@
       layout:decorate="~{layoutD}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Venta</title>
 </head>
 <body>
 <div layout:fragment="dashboard">
@@ -18,6 +18,12 @@
         <input type="text" class="form-control" th:field="*{detalle}"><br>
         <label>total:</label>
         <input type="number" class="form-control" th:field="*{total}"><br>
+        <select th:field="*{product}">
+            <th:block th:each="product: ${products}">
+                <option th:text="${product.name}" th:value="${product.id}"></option>
+            </th:block>
+        </select>
+
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
 </div>

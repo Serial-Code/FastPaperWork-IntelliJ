@@ -15,16 +15,18 @@
       <td>Tipo</td>
       <td>Descripcion</td>
       <td>Fecha</td>
+      <td>Respuesta</td>
       <td>Acciones</td>
     </tr>
     </thead>
     <tbody>
+    <a class="btn btn-danger" th:href="@{'/pqrs/new/'}">Crear</a>
     <tr th:each="pqrs: ${pqrss}">
       <td th:text="${pqrs.tipo}"></td>
       <td th:text="${pqrs.descripcion}"></td>
       <td th:text="${pqrs.fecha}"></td>
+      <td th:text="${pqrs.respuesta.respuesta}"></td>
       <td>
-        <a class="btn btn-danger" th:href="@{'/pqrs/new/'}">Crear</a>
         <a class="btn btn-info" th:href="@{'/pqrs/update/' + ${pqrs.id}}">Editar</a>
         <a class="btn btn-danger" th:href="@{'/pqrs/delete/' + ${pqrs.id}}">Eliminar</a>
       </td>
