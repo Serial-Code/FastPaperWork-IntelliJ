@@ -5,10 +5,12 @@ import com.example.demo.service.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,7 +33,10 @@ public class ProveedorController {
         }
 
         @PostMapping("/proveedor/save")
-        public String newProveedor(Proveedor proveedor){
+        public String newProveedor(@Valid Proveedor proveedor, BindingResult result){
+            if (result.hasErrors()){
+                return "/proveedor/new";
+            }
             proveedorService.saveProveedor(proveedor);
             return "redirect:/proveedor/all";
         }

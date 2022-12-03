@@ -18,10 +18,9 @@ import java.util.List;
 public class VentaController {
 
     @Autowired
-    private VentaService ventaService;
-
-    @Autowired
     private ProductService productService;
+    @Autowired
+    private VentaService ventaService;
 
     @GetMapping("/venta/all")
     public String getVentas(Model model){
@@ -40,7 +39,7 @@ public class VentaController {
     @PostMapping("/venta/save")
     public String newVenta(@Valid Venta venta, BindingResult result){
         if (result.hasErrors()){
-            return "/venta/new";
+            return "/product/new";
         }
         ventaService.saveVenta(venta);
         return "redirect:/venta/all";
@@ -65,5 +64,4 @@ public class VentaController {
         ventaService.deleteVenta(id);
         return "redirect:/venta/all";
     }
-
 }

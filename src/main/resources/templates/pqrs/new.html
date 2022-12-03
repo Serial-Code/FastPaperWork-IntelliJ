@@ -12,11 +12,21 @@
     <form th:action="@{/pqrs/save}" th:object="${pqrs}" method="post">
         <label>Tipo:</label>
         <input type="text" class="form-control" th:field="*{tipo}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('tipo')}" th:errors="*{name}"></div>
+
         <label>Descripción:</label>
         <input type="text" class="form-control" th:field="*{descripcion}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{name}"></div>
+
         <label>Fecha:</label>
         <input type="date" class="form-control" th:field="*{fecha}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{name}"></div>
 
+        <select th:field="*{respuesta}">
+            <th:block th:each="respuesta: ${respuestas}">
+                <option th:text="${respuesta.respuesta}" th:value="${respuesta.id}"></option>
+            </th:block>
+        </select>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

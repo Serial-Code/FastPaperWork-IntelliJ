@@ -16,7 +16,11 @@
         <input type="text" class="form-control" th:field="*{descripcion}"><br>
         <label>Fecha:</label>
         <input type="date" class="form-control" th:field="*{fecha}"><br>
-
+        <select th:field="*{respuesta}">
+            <th:block th:each="respuesta: ${respuestas}">
+                <option th:text="${respuesta.respuesta}" th:value="${respuesta.id}"></option>
+            </th:block>
+        </select>
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
 </div>

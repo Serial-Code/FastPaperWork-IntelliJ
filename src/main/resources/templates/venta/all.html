@@ -26,7 +26,7 @@
       <td th:text="${venta.cantidad}"></td>
       <td th:text="${venta.detalle}"></td>
       <td th:text="${venta.total}"></td>
-      <td th:text="${venta.product.name}"></td>
+      <td th:text="${venta.product.id}"></td>
 
       <td>
         <a class="btn btn-info" th:href="@{'/venta/update/' + ${venta.id}}">Editar</a>

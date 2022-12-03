@@ -20,12 +20,12 @@
                 <td>Primer Apellido</td>
                 <td>Segundo Apellido</td>
                 <td>Telefono</td>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="proveedor: ${proveedores}">
+        <a class="btn btn-info" th:href="@{'/proveedor/new/'}">Crear</a>
+        <tr th:each="proveedor: ${proveedores}">
                 <td th:text="${proveedor.RUT}"></td>
                 <td th:text="${proveedor.primer_nombre}"></td>
                 <td th:text="${proveedor.segundo_nombre}"></td>
@@ -34,8 +34,6 @@
                 <td th:text="${proveedor.telefono}"></td>
                 <td>
                     <a class="btn btn-primary" th:href="@{'/proveedor/update/' + ${proveedor.id}}">Edit</a>
-                </td>
-                <td>
                     <a class="btn btn-danger" th:onclick="eliminar([[${proveedor.id}]])">Delete</a>
                 </td>
             </tr>
