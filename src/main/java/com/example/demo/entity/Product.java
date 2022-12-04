@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

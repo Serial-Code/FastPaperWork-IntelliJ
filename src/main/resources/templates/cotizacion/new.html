@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboardU">
+    <h3>New Product</h3>
+    <form th:action="@{/cotizacion/save}" th:object="${cotizacion}" method="post">
+        <label>Fecha</label>
+        <input type="date" id="fecha" class="form-control" th:field="*{fecha}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
+
+        <label>Total:</label>
+        <input type="number"id="category" class="form-control" th:field="*{total}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('total')}" th:errors="*{total}"></div>
+
+        <select th:field="*{cotizacion}">
+            <th:block th:each="product: ${products}">
+                <option th:text="${product.name}" th:value="${product.id}"></option>
+            </th:block>
+        </select>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

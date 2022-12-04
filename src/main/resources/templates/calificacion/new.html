@@ -10,6 +10,8 @@
 <div layout:fragment="dashboardU">
   <h3>Nueva Calificacion</h3>
   <form th:action="@{/calificacion/save}" th:object="${calificacion}" method="post">
+    <label>Fecha:</label>
+    <input type="date" class="form-control" th:field="*{fecha}"><br>
     <label>Puntuacion:</label>
     <input type="text" class="form-control" th:field="*{puntuacion}"><br>
 
