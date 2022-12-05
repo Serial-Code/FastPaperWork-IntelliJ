@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/datatables.min.css}">
+</head>
+<body>
+<div layout:fragment="dashboard">
+<div class="main-content">
+  <div class="row ms-0 mx-0 p-4">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats card1">
+        <div class="card-header card1">
+          <i class="fa-solid fa-box"></i>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">3200</h3>
+          <p class="category">Productos</p>
+        </div>
+        <div class="card-footer card1">
+          <div class="stats">
+            <i class="fa-solid fa-circle-info"></i>
+            <a href="#">Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats card2">
+        <div class="card-header card2">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">120</h3>
+          <p class="category">Pedidos</p>
+        </div>
+        <div class="card-footer card2">
+          <div class="stats">
+            <i class="fa-solid fa-tag"></i>
+            <a href="#">Unitario</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats card3">
+        <div class="card-header card3">
+          <i class="fa-solid fa-dollar-sign"></i>
+        </div>
+        <div class="card-content ">
+          <h3 class="card-title">$530</h3>
+          <p class="category">Ingresos</p>
+        </div>
+        <div class="card-footer card3">
+          <div class="stats">
+            <i class="fa-solid fa-calendar-days"></i>
+            <a href="#">Semanales</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats  card4">
+        <div class="card-header card4">
+          <i class="fa-solid fa-street-view"></i>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">324</h3>
+          <p class="category">Visitantes</p>
+        </div>
+        <div class="card-footer card4">
+          <div class="stats">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <a href="#">Reciente</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-lg-12 ms-0 mx-0" style="margin: 0 20px!important;">
+    <div class="">
+      <div id="GraficaClientes" style="width: 100%; background: #f1f1f1; border-radius: 8px; box-shadow: 0px 1px 5px rgb(0 0 0 / 8%);"></div>
+    </div>
+  </div>
+
+
+  <div class="row" style="margin: 20px!important;">
+    <div class="col-lg-6 mt-4">
+
+      <div id="myfirstchart" style="background: #f1f1f1; border-radius: 8px; resize: true;box-shadow: 0px 1px 5px rgb(0 0 0 / 8%);"></div>
+    </div>
+
+    <div class="col-lg-6 mt-4">
+
+      <div id="donut-example" style="background: #f1f1f1; border-radius: 8px; resize: true;box-shadow: 0px 1px 5px rgb(0 0 0 / 8%);"></div>
+
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

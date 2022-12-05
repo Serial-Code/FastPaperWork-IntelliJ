@@ -11,6 +11,8 @@ const body = document.querySelector("body"),
 	});
 
 
+
+
 	modeSwitch.addEventListener("click", () =>{
 		body.classList.toggle("dark");
 

@@ -327,8 +327,8 @@ body.dark .switch::before{
 }
 
 input{
-	border-radius: 20px!important;
-	width: 230px!important;	
+	border-radius: 20px;
+	width: 230px;
 	transition: .1s!important;
 }
 
@@ -342,6 +342,8 @@ input{
 	justify-content: end!important;
 	margin-right: 40px!important;
 }
+
+
 
 /* ============= Fin del navbar ==========================*/
 
@@ -494,6 +496,14 @@ input{
 	font-size: 28px;
 }
 
+
+
+table.dataTable.no-footer {
+	border-bottom: lightgray !important;
+	margin: 5px 0 !important;
+	padding-top: 10px !important;
+}
+
 /*
 table th {
     background-color: var(--sidebar-color)!important;
@@ -523,13 +533,7 @@ table>tbody>tr>td {
 
 /*======================= Footer ==========================*/
 
-footer{
-	justify-content: center!important;
-	padding: 0 30px;
-	background: var(--primary-color);
-	bottom: 0;
-	width: 100%;
-}
+
 .container-footer{
 	position: relative;
 	align-items: center;
@@ -598,10 +602,12 @@ footer{
 	width: 38px;
 	border-radius: 50%;
 
-} 
+}
 
 
-
+.perfil-edit {
+	margin-right: 0px !important;
+}
 
 
 /*====================== Fin Footer =======================*/
@@ -643,10 +649,7 @@ iframe{
 }
 
 @media screen and (max-width: 450px){
-	input{
-	border-radius: 20px!important;
-	width: 200px!important;	
-}
+
 
 .btn-search{
 	right: 2px;
@@ -655,10 +658,6 @@ iframe{
 }
 
 @media screen and (max-width: 416px){
-	input{
-	border-radius: 20px!important;
-	width: 170px!important;	
-}
 
 .btn-search{
 	right: 1px;
@@ -669,7 +668,7 @@ iframe{
 	border-radius: 50%;
 	align-items: center;
 	justify-content: center;
-} 
+}
 
 .container-footer .footer-content .logo-suport img{
 	width: 13rem;
@@ -680,10 +679,7 @@ iframe{
 }
 
 @media screen and (max-width: 386px){
-	input{
-	border-radius: 20px!important;
-	width: 130px!important;	
-}
+
 
 .btn-search{
 	right: 1px;
@@ -694,7 +690,7 @@ iframe{
 	border-radius: 50%;
 	align-items: center;
 	justify-content: center;
-} 
+}
 
 .container-footer .footer-content .logo-suport img{
 	width: 11rem;

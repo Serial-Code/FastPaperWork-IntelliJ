@@ -32,4 +32,9 @@ public class mainPageController {
         return "MainPages/shoppingCar";
     }
 
+    @GetMapping("/homeAdmin")
+    public String homePageA(){
+        return "admin/indexCuerpo";
+    }
+
 }
