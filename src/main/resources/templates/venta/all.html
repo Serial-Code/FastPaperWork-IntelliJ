@@ -12,10 +12,10 @@
     <thead>
     <tr>
       <td>Fecha</td>
-      <td>Cantidad</td>
-      <td>Detalle</td>
-      <td>Total</td>
       <td>Producto</td>
+      <td>Cantidad</td>
+      <td>Total</td>
+      <td>Forma de pago</td>
       <td>Acciones</td>
     </tr>
     </thead>
@@ -23,10 +23,11 @@
     <a class="btn btn-info" th:href="@{'/venta/new/'}">Crear</a>
     <tr th:each="venta: ${ventas}">
       <td th:text="${venta.fecha}"></td>
-      <td th:text="${venta.cantidad}"></td>
-      <td th:text="${venta.detalle}"></td>
-      <td th:text="${venta.total}"></td>
       <td th:text="${venta.product.name}"></td>
+      <td th:text="${venta.cantidad}"></td>
+      <td th:text="${venta.total}"></td>
+      <td th:text="${venta.forma_de_pago.forma_de_pago}"></td>
+
 
       <td>
         <a class="btn btn-info" th:href="@{'/venta/update/' + ${venta.id}}">Editar</a>

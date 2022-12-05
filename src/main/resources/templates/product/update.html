@@ -20,11 +20,13 @@
         <input type="text" class="form-control" th:field="*{state}"><br>
         <label>Price:</label>
         <input type="text" class="form-control" th:field="*{price}"><br>
+        <label>Proveedor:</label>
         <select th:field="*{proveedor}">
             <th:block th:each="proveedor: ${proveedores}">
-                <option th:text="${proveedor.primer_nombre}" th:value="${proveedor.id}"></option>
+                <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
             </th:block>
         </select>
+        <br>
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

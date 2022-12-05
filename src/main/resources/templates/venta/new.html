@@ -14,23 +14,33 @@
         <input type="date" id="fecha" class="form-control" th:field="*{fecha}" required><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
 
-        <label>cantidad:</label>
-        <input type="text" id="cantidad" class="form-control" th:field="*{cantidad}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
-
-        <label>detalle:</label>
-        <input type="text" id="detalle" class="form-control" th:field="*{detalle}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('detalle')}" th:errors="*{detalle}"></div>
-
-        <label>total:</label>
-        <input type="text" id="total" class="form-control" th:field="*{total}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('total')}" th:errors="*{total}"></div>
-
+        <br>
+        <label>Producto:</label>
         <select th:field="*{product}">
             <th:block th:each="product: ${products}">
                 <option th:text="${product.name}" th:value="${product.id}"></option>
             </th:block>
         </select>
+        <br>
+
+        <label>cantidad:</label>
+        <input type="text" id="cantidad" class="form-control" th:field="*{cantidad}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+
+
+        <label>total:</label>
+        <input type="text" id="total" class="form-control" th:field="*{total}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('total')}" th:errors="*{total}"></div>
+
+        <label>Forma de pago:</label>
+        <select th:field="*{forma_de_pago}">
+            <th:block th:each="forma_de_pago: ${forma_de_pagos}">
+                <option th:text="${forma_de_pago.forma_de_pago}" th:value="${forma_de_pago.idforma_de_pago}"></option>
+            </th:block>
+        </select>
+        <br>
+
+
 
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

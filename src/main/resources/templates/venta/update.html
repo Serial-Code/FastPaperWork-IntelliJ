@@ -12,17 +12,25 @@
     <form th:action="@{'/venta/update/' + ${venta.id}}" th:object="${venta}" method="post">
         <label>Fecha:</label>
         <input type="date" class="form-control" th:field="*{fecha}"><br>
-        <label>cantidad:</label>
-        <input type="text" class="form-control" th:field="*{cantidad}"><br>
-        <label>detalle:</label>
-        <input type="text" class="form-control" th:field="*{detalle}"><br>
-        <label>total:</label>
-        <input type="number" class="form-control" th:field="*{total}"><br>
+        <label>Producto:</label>
         <select th:field="*{product}">
             <th:block th:each="product: ${products}">
                 <option th:text="${product.name}" th:value="${product.id}"></option>
             </th:block>
         </select>
+
+        <label>cantidad:</label>
+        <input type="text" class="form-control" th:field="*{cantidad}"><br>
+        <label>total:</label>
+        <input type="number" class="form-control" th:field="*{total}"><br>
+
+        <label>Forma de pago:</label>
+        <select th:field="*{forma_de_pago}">
+            <th:block th:each="forma_de_pago: ${forma_de_pagos}">
+                <option th:text="${forma_de_pago.forma_de_pago}" th:value="${forma_de_pago.idforma_de_pago}"></option>
+            </th:block>
+        </select>
+
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>

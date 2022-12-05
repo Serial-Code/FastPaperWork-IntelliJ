@@ -15,10 +15,7 @@
         <thead>
             <tr>
                 <td>RUT</td>
-                <td>Primer Nombre</td>
-                <td>Segundo Nombre</td>
-                <td>Primer Apellido</td>
-                <td>Segundo Apellido</td>
+                <td>Nombre</td>
                 <td>Telefono</td>
                 <th>Acciones</th>
             </tr>
@@ -27,10 +24,7 @@
         <a class="btn btn-info" th:href="@{'/proveedor/new/'}">Crear</a>
         <tr th:each="proveedor: ${proveedores}">
                 <td th:text="${proveedor.RUT}"></td>
-                <td th:text="${proveedor.primer_nombre}"></td>
-                <td th:text="${proveedor.segundo_nombre}"></td>
-                <td th:text="${proveedor.primer_apellido}"></td>
-                <td th:text="${proveedor.segundo_apellido}"></td>
+                <td th:text="${proveedor.nombre_completo}"></td>
                 <td th:text="${proveedor.telefono}"></td>
                 <td>
                     <a class="btn btn-primary" th:href="@{'/proveedor/update/' + ${proveedor.id}}">Edit</a>

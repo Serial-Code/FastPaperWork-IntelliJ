@@ -48,7 +48,7 @@
             <label class="form-label">Selecciona un nombre</label>
         <select id="proveedor" th:field="*{proveedor}" class="form-control" required>
             <th:block th:each="proveedor: ${proveedores}">
-                <option th:text="${proveedor.primer_nombre}" th:value="${proveedor.id}"></option>
+                <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
             </th:block>
         </select>
             <div class="alert alert-warning" th:if="${#fields.hasErrors('proveedor')}" th:errors="*{proveedor}"></div>

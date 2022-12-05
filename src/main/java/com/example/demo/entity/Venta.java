@@ -25,14 +25,20 @@ public class Venta {
     @Column
     private int cantidad;
 
-    @NotEmpty(message = "El campo descripción no puede ser vacio")
-    @Column(columnDefinition = "text")
-    private String detalle;
-
     @Column
     private Double total;
 
     @ManyToOne
-    @JoinColumn(name = "idproduct")
-    private Proveedor product;
+    @JoinColumn(name = "id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn (name = "iduser")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn (name = "idforma_de_pago")
+    private Forma_de_pago forma_de_pago;
+
+
 }
