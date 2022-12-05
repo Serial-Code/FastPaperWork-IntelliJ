@@ -18,13 +18,13 @@
     </tr>
     </thead>
     <tbody>
+    <a class="btn btn-success" th:href="@{/tracking/new}">Create</a>
     <tr th:each="tracking: ${trackings}">
       <td th:text="${tracking.ref}"></td>
       <td th:text="${tracking.date_start}"></td>
       <td th:text="${tracking.date_end}"></td>
       <td th:text="${tracking.destination}"></td>
       <td>
-        <a class="btn btn-success" th:href="@{/tracking/new}">Create</a>
         <a class="btn btn-primary" th:href="@{'/tracking/update/' + ${tracking.id}}">Edit</a>
         <a class="btn btn-danger" th:href="@{'/tracking/delete/' + ${tracking.id}}">Delete</a>
       </td>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutU}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboardU">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Producto</th>
+            <th>Acciones</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <a class="btn btn-info" th:href="@{'/cotizacion/new/'}">Crear</a>
+
+        <tr th:each=" cotizacion: ${cotizaciones}">
+            <td th:text="${cotizacion.fecha}"></td>
+            <td th:text="${cotizacion.total}"></td>
+            <td th:text="${cotizacion.product.name}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/cotizacion/update/' + ${cotizacion.id}}">Edit</a>
+                <a class="btn btn-danger" th:href="@{'/cotizacion/delete/' + ${cotizacion.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

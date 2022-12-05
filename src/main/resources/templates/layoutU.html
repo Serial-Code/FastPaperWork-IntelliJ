@@ -63,6 +63,12 @@
             <span class="text nav-text">Calificación</span>
           </a>
         </li>
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/cotizacion/all}">
+            <i class="fa-solid fa-house icon"></i>
+            <span class="text nav-text">Cotización</span>
+          </a>
+        </li>
 
       </ul>
     </div>
