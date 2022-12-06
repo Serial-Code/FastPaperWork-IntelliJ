@@ -2,8 +2,11 @@ package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "respuesta")
@@ -16,6 +19,13 @@ public class Respuesta {
     @Column(name = "idrespuesta", unique = true)
     private Long id;
 
-    @Column(length = 300, nullable = false, columnDefinition = "text")
+    @Column
+    private Date fecha ;
+
+    @Column(length = 300)
     private String respuesta;
+
+    @ManyToOne
+    @JoinColumn(name = "idpqrs")
+    private Pqrs pqrs;
 }

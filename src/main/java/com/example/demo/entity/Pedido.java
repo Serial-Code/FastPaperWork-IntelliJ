@@ -5,7 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "pedido")
@@ -18,11 +19,11 @@ public class Pedido {
     @Column(name = "idpedido", unique = true)
     private Long id;
 
-    @NotEmpty(message = "El campo fecha no puede ser vacio")
+
     @Column
     private Date fecha;
 
-    @NotEmpty(message = "El campo cantidad no puede ser vacio")
+
     @Column(length = 50, nullable = false)
     private int cantidad;
 
@@ -30,9 +31,8 @@ public class Pedido {
     @Column(length = 50, nullable = false)
     private String direccion;
 
-    @NotEmpty(message = "El campo descuento no puede ser vacio")
     @Column(length = 50, nullable = false)
-    private double descuento;
+    private int descuento;
 
     @ManyToOne
     @JoinColumn(name = "id")

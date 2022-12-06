@@ -27,12 +27,16 @@
     <table id="respuestaTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
     <thead>
     <tr>
+      <th>Fecha</th>
+      <th>Pqrs</th>
       <th>Respuesta</th>
       <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="respuesta: ${respuestas}">
+      <td th:text="${respuesta.fecha}"></td>
+      <td th:text="${respuesta.pqrs.descripcion}"></td>
       <td th:text="${respuesta.respuesta}"></td>
       <td>
         <a class="btn btn-info" th:href="@{'/respuesta/update/' + ${respuesta.id}}">Editar</a>

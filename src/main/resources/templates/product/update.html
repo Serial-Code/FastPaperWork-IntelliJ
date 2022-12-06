@@ -26,16 +26,19 @@
         <label>State:</label>
         <select type="text" id="state" class="form-control" th:field="*{state}" required>
             <option value="HABILITADO">HABILITADO</option>
-            <option value="DESABILITADO">DESABILITADO</option>
+            <option value="DESABILITADO">DESHABILITADO</option>
         </select><br>
         <label>Price:</label>
         <input type="text" class="form-control" th:field="*{price}"><br>
-        <label>Proveedor:</label>
-        <select th:field="*{proveedor}">
-            <th:block th:each="proveedor: ${proveedores}">
-                <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
-            </th:block>
-        </select>
+        <div class="form-group">
+            <label class="form-label">Selecciona un nombre</label>
+            <select id="proveedor" th:field="*{proveedor}" class="form-control" required>
+                <th:block th:each="proveedor: ${proveedores}">
+                    <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
+                </th:block>
+            </select>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('proveedor')}" th:errors="*{proveedor}"></div>
+        </div>
         <br>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary">Actualizar</button>

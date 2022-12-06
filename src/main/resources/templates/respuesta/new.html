@@ -8,14 +8,34 @@
 </head>
 <body>
 <div layout:fragment="dashboard">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
     <h3>Nueva Respuesta</h3>
     <form th:action="@{/respuesta/save}" th:object="${respuesta}" method="post">
-        <label>Respuesta:</label>
-        <textarea placeholder="respuesta" th:field="*{respuesta}"></textarea>
+        <label>Fecha:</label>
+        <input type="date" id="fecha" class="form-control" th:field="*{fecha}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
         <br>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="form-group">
+            <label class="form-label">Selecciona una pqrs</label>
+            <select id="pqrs" th:field="*{pqrs}" class="form-control" required>
+                <th:block th:each="pqrs: ${pqrss}">
+                    <option th:text="${pqrs.descripcion}" th:value="${pqrs.id}"></option>
+                </th:block>
+            </select>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('pqrs')}" th:errors="*{pqrs}"></div>
+        </div>
+        <br>
+        <label>Respuesta:</label>
+        <textarea class="form-control" rows="5" placeholder="respuesta" th:field="*{respuesta}"></textarea>
+        <br>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary active" th:href="@{/respuesta/all}">Cancelar</a>
+        </div>
     </form>
 </div>
-
+    </div>
+</div>
 </body>
 </html>

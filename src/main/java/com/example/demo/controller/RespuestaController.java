@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Pqrs;
 import com.example.demo.entity.Proveedor;
 import com.example.demo.entity.Respuesta;
+import com.example.demo.service.PqrsService;
 import com.example.demo.service.RespuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +20,23 @@ import java.util.List;
 public class RespuestaController {
 
     @Autowired
+    private PqrsService pqrsService;
+    @Autowired
     private RespuestaService respuestaService;
 
     @GetMapping("/respuesta/all")
     public String getRespuestas(Model model){
         List<Respuesta> respuestas = respuestaService.getRespuestas();
+        List<Pqrs> pqrss = pqrsService.getPqrss();
         model.addAttribute("respuestas", respuestas);
+        model.addAttribute("pqrss", pqrsService.getPqrss());
         return "respuesta/all";
     }
 
     @GetMapping("/respuesta/new")
     public String showNewRespuesta(Model model){
         model.addAttribute("respuesta", new Respuesta());
+        model.addAttribute("pqrss", pqrsService.getPqrss());
         return "respuesta/new";
     }
 
@@ -45,6 +52,7 @@ public class RespuestaController {
     @GetMapping("/respuesta/update/{id}")
     public String showUpdateRespuesta(@PathVariable Long id, Model model){
         model.addAttribute("respuesta", respuestaService.getRespuesta(id));
+        model.addAttribute("pqrss", pqrsService.getPqrss());
         return "respuesta/update";
     }
 
