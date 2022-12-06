@@ -16,6 +16,6 @@ public class Respuesta {
     @Column(name = "idrespuesta", unique = true)
     private Long id;
 
-    @Column(columnDefinition = "text")
+    @Column(length = 300, nullable = false, columnDefinition = "text")
     private String respuesta;
 }

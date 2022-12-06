@@ -1,14 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Proveedor;
 import com.example.demo.entity.Respuesta;
 import com.example.demo.service.RespuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,7 +34,10 @@ public class RespuestaController {
     }
 
     @PostMapping("/respuesta/save")
-    public String newRespuesta(Respuesta respuesta){
+    public String newRespuesta(@Valid Respuesta respuesta, BindingResult result){
+        if (result.hasErrors()){
+            return "/respuesta/new";
+        }
         respuestaService.saveRespuesta(respuesta);
         return "redirect:/respuesta/all";
     }
@@ -43,7 +49,7 @@ public class RespuestaController {
     }
 
     @PostMapping("/respuesta/update/{id}")
-    public String updatePRespuesta(@PathVariable Long id,Respuesta respuesta){
+    public String updateRespuesta(@PathVariable Long id,Respuesta respuesta){
         respuesta.setId(id);
         respuestaService.updateRespuesta(respuesta);
         return "redirect:/respuesta/all";

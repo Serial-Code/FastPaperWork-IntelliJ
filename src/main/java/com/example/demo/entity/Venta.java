@@ -33,10 +33,6 @@ public class Venta {
     private Product product;
 
     @ManyToOne
-    @JoinColumn (name = "iduser")
-    private User user;
-
-    @ManyToOne
     @JoinColumn (name = "idforma_de_pago")
     private Forma_de_pago forma_de_pago;
 

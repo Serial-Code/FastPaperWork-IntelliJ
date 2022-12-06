@@ -4,20 +4,30 @@
       layout:decorate="~{layoutD}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Actualizar</title>
 </head>
 <body>
 <div layout:fragment="dashboard">
-    <h3>Update Supplier</h3>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+    <h3>Actualizar Producto</h3>
+            <br>
     <form th:action="@{'/product/update/' + ${product.id}}" th:object="${product}" method="post">
         <label>Name:</label>
         <input type="text" class="form-control" th:field="*{name}"><br>
         <label>Category:</label>
-        <input type="text" class="form-control" th:field="*{category}"><br>
+        <select type="text" id="category" class="form-control" th:field="*{category}" required>
+            <option value="PAPELERIA">PAPELERIA</option>
+            <option value="DULCERIA">DULCERIA</option>
+            <option value="BISUTERIA">BISUTERIA</option>
+        </select><br>
         <label>Quantity:</label>
         <input type="number" class="form-control" th:field="*{quantity}"><br>
         <label>State:</label>
-        <input type="text" class="form-control" th:field="*{state}"><br>
+        <select type="text" id="state" class="form-control" th:field="*{state}" required>
+            <option value="HABILITADO">HABILITADO</option>
+            <option value="DESABILITADO">DESABILITADO</option>
+        </select><br>
         <label>Price:</label>
         <input type="text" class="form-control" th:field="*{price}"><br>
         <label>Proveedor:</label>
@@ -27,9 +37,13 @@
             </th:block>
         </select>
         <br>
-
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a class="btn btn-secondary active" th:href="@{/product/all}">Cancelar</a>
+        </div>
     </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

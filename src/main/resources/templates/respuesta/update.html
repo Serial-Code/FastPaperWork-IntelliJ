@@ -4,14 +4,15 @@
       layout:decorate="~{layoutD}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Actualizar</title>
 </head>
 <body>
 <div layout:fragment="dashboard">
     <h3>Nueva Respuesta</h3>
-    <form th:action="@{/respuesta/save}" th:object="${respuesta}" method="post">
-        <label>Respuesta:</label>
-        <input type="text" class="form-control" th:field="*{respuesta}"><br>
+    <form th:action="@{'/respuesta/update/' + ${respuesta.id}}" th:object="${respuesta}" method="post">
+    <label>Respuesta:</label>
+        <textarea placeholder="respuesta" th:field="*{respuesta}"></textarea>
+        <br>
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
 </div>
