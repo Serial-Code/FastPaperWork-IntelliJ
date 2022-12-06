@@ -8,11 +8,19 @@
 </head>
 <body>
 <div layout:fragment="dashboard">
-    <h3>Nuevo</h3>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <h3>Nuevo </h3>
+            <br>
     <form th:action="@{/inventario/save}" th:object="${inventario}" method="post">
-        <label>Categoria:</label>
-        <input type="text" class="form-control" th:field="*{categoria}"><br>
+
         <div class="alert alert-warning" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+        <label class="form-label">Categoria</label>
+        <select type="text" id="categoria" class="form-control" th:field="*{categoria}" required>
+            <option value="PAPELERIA">PAPELERIA</option>
+            <option value="DULCERIA">DULCERIA</option>
+            <option value="BISUTERIA">BISUTERIA</option>
+        </select><br>
 
         <label>Entradas:</label>
         <input type="number" class="form-control" th:field="*{entradas}"><br>
@@ -26,13 +34,23 @@
         <input type="text" class="form-control" th:field="*{descripcion}"><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{name}"></div>
 
-        <select th:field="*{product}">
-            <th:block th:each="product: ${products}">
-                <option th:text="${product.name}" th:value="${product.id}"></option>
-            </th:block>
-        </select>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="form-group">
+            <label class="form-label">Selecciona un producto</label>
+            <select id="product" th:field="*{product}" class="form-control" required>
+                <th:block th:each="product: ${products}">
+                    <option th:text="${product.name}" th:value="${product.id}"></option>
+                </th:block>
+            </select>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></div>
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary active" th:href="@{/inventario/all}">Cancelar</a>
+        </div>
     </form>
+    </div>
+    </div>
 </div>
 </body>
 </html>

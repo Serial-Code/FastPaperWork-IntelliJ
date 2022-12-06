@@ -44,9 +44,9 @@ public class ProductViewController {
     @GetMapping("/product/all")
     public String getProducts(Model model) {
         List<Product> products = productService.getProducts();
-        List<Proveedor> proveedors = proveedorService.getProveedores();
+        List<Proveedor> proveedores = proveedorService.getProveedores();
         model.addAttribute("products", products);
-        model.addAttribute("proveedors", proveedors);
+        model.addAttribute("proveedores", proveedores);
         return "product/all";
     }
 

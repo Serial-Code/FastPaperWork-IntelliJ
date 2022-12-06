@@ -32,7 +32,7 @@ public class Inventario {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "idproduct")
+    @JoinColumn(name = "id")
     private Product product;
 
 }

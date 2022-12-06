@@ -22,19 +22,7 @@ public class Proveedor {
 
     @NotEmpty(message = "El campo nombre no puede ser vacio")
     @Column(length = 50, nullable = false)
-    private String primer_nombre;
-
-    @NotEmpty(message = "El campo nombre no puede ser vacio")
-    @Column(length = 50, nullable = false)
-    private String segundo_nombre;
-
-    @NotEmpty(message = "El campo apellido no puede ser vacio")
-    @Column(length = 50, nullable = false)
-    private String primer_apellido;
-
-    @NotEmpty(message = "El campo apellido no puede ser vacio")
-    @Column(length = 50, nullable = false)
-    private String segundo_apellido;
+    private String nombre_completo;
 
     @Column(name = "telefono", length = 10, nullable = false)
     private Integer telefono;

@@ -8,17 +8,39 @@
 </head>
 <body>
 <div layout:fragment="dashboard">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
     <h3>Actualizar Pedido</h3>
+            <br>
     <form th:action="@{'/pedido/update/' + ${pedido.id}}" th:object="${pedido}" method="post">
-        <label>cantidad:</label>
-        <input type="text" class="form-control" th:field="*{cantidad}"><br>
         <label>Fecha:</label>
         <input type="date" class="form-control" th:field="*{fecha}"><br>
+        <div class="form-group">
+            <label class="form-label">Seleccione un producto</label>
+            <select id="product" th:field="*{product}" class="form-control" required>
+                <th:block th:each="product: ${products}">
+                    <option th:text="${product.name}" th:value="${product.id}"></option>
+                </th:block>
+            </select><br>
+        </div>
+        <label>cantidad:</label>
+        <input type="text" class="form-control" th:field="*{cantidad}"><br>
         <label>direccion:</label>
         <input type="text" class="form-control" th:field="*{direccion}"><br>
         <label>descuento:</label>
         <input type="number" class="form-control" th:field="*{descuento}"><br>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <div class="form-group">
+            <label class="form-label">Seleccione una forma de pago</label>
+            <select id="forma_de_pago" th:field="*{forma_de_pago}" class="form-control" required>
+                <th:block th:each="forma_de_pago: ${forma_de_pagos}">
+                    <option th:text="${forma_de_pago.forma_de_pago}" th:value="${forma_de_pago.idforma_de_pago}"></option>
+                </th:block>
+            </select>
+        </div><br>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary active" th:href="@{/pedido/all}">Cancelar</a>
+        </div>
     </form>
 </div>
 </body>
