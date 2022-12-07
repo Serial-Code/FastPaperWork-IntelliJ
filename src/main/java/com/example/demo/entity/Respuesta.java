@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -13,19 +12,14 @@ import java.sql.Date;
 @Getter
 @Setter
 public class Respuesta {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idrespuesta", unique = true)
-    private Long id;
+    private Integer id;
 
     @Column
-    private Date fecha ;
+    private Date fecha;
 
-    @Column(length = 300)
-    private String respuesta;
-
-    @ManyToOne
-    @JoinColumn(name = "idpqrs")
-    private Pqrs pqrs;
+    @Column(name = "informacion")
+    private String informacion;
 }

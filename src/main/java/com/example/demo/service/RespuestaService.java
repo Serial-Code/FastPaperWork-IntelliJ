@@ -20,7 +20,7 @@ public class RespuestaService {
         return respuestaRepository.save(respuesta);
     }
 
-    public Respuesta getRespuesta(Long id){
+    public Respuesta getRespuesta(Integer id){
         return respuestaRepository.findById(id).get();
     }
 
@@ -28,7 +28,7 @@ public class RespuestaService {
         return respuestaRepository.save(respuesta);
     }
 
-    public void deleteRespuesta(Long id){
+    public void deleteRespuesta(Integer id){
         respuestaRepository.deleteById(id);
     }
 }
