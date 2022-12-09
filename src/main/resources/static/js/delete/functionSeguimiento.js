@@ -9,7 +9,7 @@ swal({
 .then((ok) => {
   if (ok) {
 	$.ajax({
-		url:"/eliminar/seguimiento_envio/"+id,
+		url:"/tracking/delete/"+id,
 		success: function(res) {
 			console.log(res);
 		}
@@ -18,7 +18,7 @@ swal({
       icon: "success",
     }).then((ok)=>{
 		if(ok){
-			location.href="/listar/seguimiento_envio";
+			location.href="/tracking/all";
 		}
 });
   } else {

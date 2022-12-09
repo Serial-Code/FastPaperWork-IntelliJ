@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
 </head>
 <body>
 <div layout:fragment="dashboardU">
@@ -26,14 +29,27 @@
             <td th:text="${cotizacion.total}"></td>
             <td th:text="${cotizacion.product.name}"></td>
             <td>
-                <a class="btn btn-primary" th:href="@{'/cotizacion/update/' + ${cotizacion.id}}">Edit</a>
-                <a class="btn btn-danger" th:href="@{'/cotizacion/delete/' + ${cotizacion.id}}">Delete</a>
+                <a class="btn btn-primary" th:href="@{'/cotizacion/update/' + ${cotizacion.id}}">Editar</a>
+                <a class="btn btn-danger" th:onclick="eliminar([[${cotizacion.id}]])">Eliminar</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+<div layout:fragment="addjs">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cotizacionTable').DataTable();
+        });
+    </script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/delete/functionCotizacion.js"></script>
+
+</div>
 
 </body>
 </html>

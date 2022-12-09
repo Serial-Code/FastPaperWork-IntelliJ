@@ -20,7 +20,7 @@
     </div>
     <div class="d-flex">
       <a class="btn btn-success mx-2">EXCEL</a>
-      <a class="btn btn-danger" th:href="@{/venta/report?primer_nombre=tipo=pdf}">PDF</a>
+      <a class="btn btn-danger" th:href="@{/venta/report?nombre_completo=tipo=pdf}">PDF</a>
     </div>
   </div>
   <div class="table-responsive">
@@ -46,7 +46,7 @@
 
       <td>
         <a class="btn btn-info" th:href="@{'/venta/update/' + ${venta.id}}">Editar</a>
-        <a class="btn btn-danger" th:href="@{'/venta/delete/' + ${venta.id}}">Eliminar</a>
+        <a class="btn btn-danger" th:onclick="eliminar([[${venta.id}]])">Eliminar</a>
       </td>
     </tr>
     </tbody>
@@ -54,6 +54,7 @@
   </div>
 </div>
 <div layout:fragment="addjs">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   <script>
@@ -61,6 +62,10 @@
       $('#ventaTable').DataTable();
     });
   </script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/delete/functionVenta.js"></script>
+
 </div>
 </body>
 </html>
