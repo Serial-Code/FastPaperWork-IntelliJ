@@ -35,6 +35,7 @@ public class RespuestaController {
     @GetMapping("/respuesta/new")
     public String showNewRespuesta(Model model){
         model.addAttribute("respuesta", new Respuesta());
+        model.addAttribute("pqrss", pqrsService.getPqrss());
         return "respuesta/new";
     }
 
@@ -47,6 +48,7 @@ public class RespuestaController {
     @GetMapping("/respuesta/update/{id}")
     public String showUpdateRespuesta(@PathVariable Integer id, Model model){
         model.addAttribute("respuesta", respuestaService.getRespuesta(id));
+        model.addAttribute("pqrss", pqrsService.getPqrss());
         return "respuesta/update";
     }
 

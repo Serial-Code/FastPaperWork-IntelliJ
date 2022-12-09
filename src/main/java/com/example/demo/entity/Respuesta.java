@@ -22,4 +22,8 @@ public class Respuesta {
 
     @Column(name = "informacion")
     private String informacion;
+
+    @ManyToOne
+    @JoinColumn(name = "idpqrs")
+    private Pqrs pqrs;
 }

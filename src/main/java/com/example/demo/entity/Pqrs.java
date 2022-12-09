@@ -26,11 +26,11 @@ public class Pqrs {
     @Column(columnDefinition = "text")
     private String descripcion;
 
-    @NotEmpty(message = "El campo fecha no puede ser vacio")
-    @Column(length = 50, nullable = false)
+
+    @Column
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idrespuesta")
-    private Respuesta respuesta;
+    @JoinColumn(name = "id")
+    private User user;
 }

@@ -4,17 +4,43 @@
       layout:decorate="~{layoutU}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Calificación</title>
 </head>
 <body>
-<div layout:fragment="dashboardU">
-    <h3>Actualizar Calificación</h3>
+<div layout:fragment="dashboard">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <h3>Actualización calificación</h3>
+            <br>
     <form th:action="@{'/calificacion/update/' + ${calificacion.id}}" th:object="${calificacion}" method="post">
         <label>Fecha:</label>
         <input type="date" class="form-control" th:field="*{fecha}"><br>
-        <label>puntuacion:</label>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
+
+        <br>
+        <div class="form-group">
+            <label class="form-label">Selecciona un producto</label>
+            <select id="product" th:field="*{product}" class="form-control" required>
+                <th:block th:each="product: ${products}">
+                    <option th:text="${product.name}" th:value="${product.id}"></option>
+                </th:block>
+            </select>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></div>
+        </div>
+        <br>
+
+        <label>Puntuacion:</label>
         <input type="text" class="form-control" th:field="*{puntuacion}"><br>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('puntuacion')}" th:errors="*{puntuacion}"></div>
+        <br>
+        <label>Observaciones:</label>
+        <input type="text" class="form-control" th:field="*{observaciones}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"></div>
+        <br>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary active" th:href="@{/calificacion/all}">Cancelar</a>
+        </div>
     </form>
 </div>
 </body>

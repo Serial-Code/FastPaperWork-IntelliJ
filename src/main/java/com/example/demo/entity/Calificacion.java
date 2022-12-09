@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "calificacion")
@@ -24,4 +24,11 @@ public class Calificacion {
 
     @Column(length = 50, nullable = false)
     private int puntuacion;
+
+    @Column(length = 50, nullable = false)
+    private String observaciones;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Product product;
 }

@@ -6,14 +6,44 @@
   <title>User Dashboard</title>
 </head>
 <body>
-<div layout:fragment="dashboardU">
-  <h2>Welcome to User Dashboard</h2>
-  <p>Logged as: <span sec:authentication="name"></span></p>
-  <p>Has role: <span sec:authentication="authorities"></span></p>
-  <div>
-    <p><a th:href="@{/}">Home</a></p>
-    <p><a th:href="@{/logout}">Log out</a></p>
+<div layout:fragment="dashboard">
+  <h2 class="justify-content-center text-center mt-5">Bienvenido al dashboard del usuario</h2>
+  <div class="row d-flex justify-content-center align-items-center my-5">
+    <div class="col col-md-9 col-lg-8 col-xl-8">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body p-4">
+          <div class="d-flex text-black">
+            <div class="flex-shrink-1">
+              <i class="fa-solid fa-user img-fluid" style="font-size: 200px; border-radius: 10px"></i>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1">Laura</h5>
+              <p class="mb-0 pb-1" style="color: #2b2a2a;"><span sec:authentication="name"></span></p>
+              <p class="mb-0 pb-1" style="color: #2b2a2a;"><span sec:authentication="authorities"></span></p>
+              <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                   style="background-color: #efefef;">
+                <div>
+                  <p class="small text-muted mb-1">Mis PQRS</p>
+                  <p class="mb-0">2</p>
+                </div>
+                <div class="px-3">
+                  <p class="small text-muted mb-1">Mis calificaciones</p>
+                  <p class="mb-0">14</p>
+                </div>
+              </div>
+              <div class="d-flex pt-1">
+                <a type="button" class="btn btn-primary me-1 flex-grow-1" th:href="@{/homeUser}">Inicio</a>
+                <a type="button" class="btn btn-outline-primary flex-grow-1" th:href="@{/logout}">Cerrar session</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
 </div>
 </body>
 </html>

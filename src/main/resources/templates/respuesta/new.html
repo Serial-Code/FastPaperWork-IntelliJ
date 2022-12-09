@@ -15,7 +15,16 @@
             <form th:action="@{/respuesta/save}" th:object="${respuesta}" method="post">
                 <label>fecha</label>
                 <input type="date" class="form-control" th:field="*{fecha}"><br>
-
+                <div class="form-group">
+                    <label class="form-label">Selecciona una PQRS</label>
+                    <select id="pqrs" th:field="*{pqrs}" class="form-control" required>
+                        <th:block th:each="pqrs: ${pqrss}">
+                            <option th:text="${pqrs.descripcion}" th:value="${pqrs.id}"></option>
+                        </th:block>
+                    </select>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('pqrs')}" th:errors="*{pqrs}"></div>
+                </div>
+                <br>
                 <label>respuesta</label>
                 <textarea class="form-control" th:field="*{informacion}"></textarea>
 

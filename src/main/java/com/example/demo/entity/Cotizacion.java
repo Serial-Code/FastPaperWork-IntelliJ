@@ -18,14 +18,16 @@ public class Cotizacion {
     @Column(name = "idcotizacion", unique = true)
     private Long id;
 
-    @NotEmpty(message = "El campo fecha no puede ser vacio")
-    @Column(nullable = false)
+    @Column
     private Date fecha;
 
     @Column
-    private Double price;
+    private Double total;
 
     @ManyToOne
-    @JoinColumn(name = "idproduct")
+    @JoinColumn(name = "iduser")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "id")
     private Product product;
 }

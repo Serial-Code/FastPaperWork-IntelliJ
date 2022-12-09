@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.ReportPqrsDTO;
-import com.example.demo.DTO.ReportProductsDTO;
 import com.example.demo.entity.Pqrs;
+import com.example.demo.entity.User;
+import com.example.demo.entity.Respuesta;
 import com.example.demo.enums.TipoReporteEnum;
-import com.example.demo.service.PqrsService;
-import com.example.demo.service.ReportPqrsService;
-import com.example.demo.service.RespuestaService;
+import com.example.demo.service.*;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -33,8 +32,9 @@ public class PqrsController {
     @Autowired
     private PqrsService pqrsService;
 
+
     @Autowired
-    private RespuestaService respuestaService;
+    private UserServices userServices;
 
     @Autowired
     private ReportPqrsService reportPqrsService;
@@ -42,14 +42,16 @@ public class PqrsController {
     @GetMapping("/pqrs/all")
     public String getPqrss(Model model){
         List<Pqrs> Pqrss = pqrsService.getPqrss();
+        List<User> Users = userServices.getUsers();
         model.addAttribute("pqrss", Pqrss);
+        model.addAttribute("users", Users);
         return "pqrs/all";
     }
 
     @GetMapping("/pqrs/new")
     public String showNewPqrs(Model model){
         model.addAttribute("pqrs", new Pqrs());
-        model.addAttribute("respuestas", respuestaService.getRespuestas());
+        model.addAttribute("users", userServices.getUsers());
         return "pqrs/new";
     }
 
@@ -65,7 +67,7 @@ public class PqrsController {
     @GetMapping("/pqrs/update/{id}")
     public String showUpdatePqrs(@PathVariable Long id, Model model){
         model.addAttribute("pqrs", pqrsService.getPqrs(id));
-        model.addAttribute("respuestas", respuestaService.getRespuestas());
+        model.addAttribute("users", userServices.getUsers());
         return "pqrs/update";
     }
 
