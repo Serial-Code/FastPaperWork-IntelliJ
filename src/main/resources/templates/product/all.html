@@ -52,8 +52,8 @@
       <td th:text="${product.price}"></td>
       <td th:text="${product.proveedor.nombre_completo}"></td>
       <td>
-        <a class="btn btn-primary" th:href="@{'/product/update/' + ${product.id}}">Edit</a>
-        <a class="btn btn-danger" th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
+        <a class="btn btn-primary" th:href="@{'/product/update/' + ${product.id}}">Editar</a>
+        <a class="btn btn-danger" th:onclick="eliminar([[${product.id}]])">Eliminar</a>
       </td>
     </tr>
     </tbody>
@@ -61,6 +61,7 @@
   </div>
 </div>
 <div layout:fragment="addjs">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   <script>
@@ -68,7 +69,10 @@
       $('#productTable').DataTable();
     });
   </script>
-</div>
 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/delete/functionProducto.js"></script>
+
+</div>
 </body>
 </html>

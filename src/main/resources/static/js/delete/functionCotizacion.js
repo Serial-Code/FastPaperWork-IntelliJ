@@ -9,7 +9,7 @@ swal({
 .then((ok) => {
   if (ok) {
 	$.ajax({
-		url:"/eliminar/cotizacion/"+id,
+		url:"/cotizacion/delete/"+id,
 		success: function(res) {
 			console.log(res);
 		}
@@ -18,11 +18,11 @@ swal({
       icon: "success",
     }).then((ok)=>{
 		if(ok){
-			location.href="/listar/cotizacion";
+			location.href="/cotizacion/all";
 		}
 });
   } else {
-    swal("Your imaginary file is safe!");
+    swal("No se borraron tus datos!");
   }
 });
 	

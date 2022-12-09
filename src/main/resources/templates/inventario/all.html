@@ -46,21 +46,26 @@
     <td th:text="${inventario.product.name}"></td>
     <td>
       <a class="btn btn-info" th:href="@{'/inventario/update/' + ${inventario.id}}">Editar</a>
-      <a class="btn btn-danger" th:href="@{'/inventario/delete/' + ${inventario.id}}">Eliminar</a>
+      <a class="btn btn-danger" th:onclick="eliminar([[${inventario.id}]])">Eliminar</a>
     </td>
   </tr>
   </tbody>
 </table>
   </div>
 </div>
-    <div layout:fragment="addjs">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-      <script>
+<div layout:fragment="addjs">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <script>
     $(document).ready(function () {
       $('#inventarioTable').DataTable();
     });
   </script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/delete/functionInventario.js"></script>
+
 </div>
 </body>
 </html>

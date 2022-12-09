@@ -1,7 +1,7 @@
 function eliminar(id){
 swal({
   title: "Esta seguro de eliminar?",
-  text: "Una vez borrado, no podrá recuperar este archivo!",
+  text: "Una vez borrado, no podrá recuperar este pedido!",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -9,20 +9,20 @@ swal({
 .then((ok) => {
   if (ok) {
 	$.ajax({
-		url:"/eliminar/pedido/"+id,
+		url:"/pedido/delete/"+id,
 		success: function(res) {
 			console.log(res);
 		}
 	});
-    swal("¡Puf! ¡Tu archivo ha sido borrado!", {
+    swal("¡Puf! ¡Tu pedido ha sido borrado!", {
       icon: "success",
     }).then((ok)=>{
 		if(ok){
-			location.href="/listar/pedido";
+			location.href="/pedido/all";
 		}
 });
   } else {
-    swal("Su archivo esta a salvo.");
+    swal("Su pedido esta a salvo.");
   }
 });
 	
