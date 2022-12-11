@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +31,13 @@ public class Pqrs {
     @Column
     private Date fecha;
 
+
+    @Column
+    private String contenido;
+
     @ManyToOne
     @JoinColumn(name = "id")
+    @JsonBackReference
     private User user;
+
 }

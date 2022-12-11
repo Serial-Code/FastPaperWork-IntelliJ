@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>PQRS</title>
+
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+</head>
+<body>
+<div layout:fragment="dashboard">
+    <h2 class="fs-5 mb-4 d-flex justify-content-center">Lista PQRS</h2>
+
+    <div class="mt-5"></div>
+
+    <div class="table-responsive">
+        <table id="pqrsTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Respuesta</th>
+                <th>Acciones</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pqrs: ${pqrss}">
+                <td th:text="${pqrs.fecha}"></td>
+                <td th:text="${pqrs.user.firstName}"></td>
+                <td th:text="${pqrs.tipo}"></td>
+                <td th:text="${pqrs.descripcion}"></td>
+                <td th:text="${pqrs.contenido}"></td>
+                <td>
+                    <a class="btn btn-info" th:href="@{/respuesta/new}">Responder</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div layout:fragment="addjs">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#pqrsTable').DataTable();
+        });
+    </script>
+</div>
+
+</body>
+</html>

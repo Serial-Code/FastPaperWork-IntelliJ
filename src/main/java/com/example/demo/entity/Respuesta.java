@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,13 +18,12 @@ public class Respuesta {
     @Column(name = "idrespuesta", unique = true)
     private Integer id;
 
-    @Column
-    private Date fecha;
-
     @Column(name = "informacion")
     private String informacion;
 
     @ManyToOne
     @JoinColumn(name = "idpqrs")
+    @JsonBackReference
     private Pqrs pqrs;
+
 }

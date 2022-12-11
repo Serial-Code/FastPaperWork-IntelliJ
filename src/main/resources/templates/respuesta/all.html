@@ -36,8 +36,7 @@
     <tbody>
     <tr th:each="respuesta: ${respuestas}">
       <td th:text="${respuesta.fecha}"></td>
-      <td th:text="${respuesta.pqrs.descripcion}"></td>
-      <td th:text="${respuesta.informacion}"></td>
+      <td th:text="${respuesta.informacion}">
       <td>
         <a class="btn btn-info" th:href="@{'/respuesta/update/' + ${respuesta.id}}">Editar</a>
         <a class="btn btn-danger" th:onclick="eliminar([[${respuesta.id}]])">Eliminar</a>

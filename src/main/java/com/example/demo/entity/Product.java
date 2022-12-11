@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,6 +40,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "idproveedor")
+    @JsonBackReference
     private Proveedor proveedor;
 
 }

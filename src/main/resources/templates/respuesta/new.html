@@ -13,8 +13,6 @@
             <h3>Nueva respuesta</h3>
             <br>
             <form th:action="@{/respuesta/save}" th:object="${respuesta}" method="post">
-                <label>fecha</label>
-                <input type="date" class="form-control" th:field="*{fecha}"><br>
                 <div class="form-group">
                     <label class="form-label">Selecciona una PQRS</label>
                     <select id="pqrs" th:field="*{pqrs}" class="form-control" required>
@@ -30,7 +28,7 @@
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a class="btn btn-secondary active" th:href="@{/respuesta/all}">Cancelar</a>
+                    <a class="btn btn-secondary active" th:href="@{/pqrs/todo}">Cancelar</a>
                 </div>
 
             </form>

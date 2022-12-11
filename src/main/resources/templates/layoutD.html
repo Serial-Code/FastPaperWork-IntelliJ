@@ -78,15 +78,9 @@
             <span class="text nav-text">Venta</span>
           </a>
         </li>
-        <li sec:authorize="isAuthenticated()" class="nav-link">
-          <a th:href="@{/pqrs/all}" target="Principal">
-            <i class="fa-solid fa-clipboard icon"></i>
-            <span class="text nav-text">Pqrs</span>
-          </a>
-        </li>
 
         <li sec:authorize="isAuthenticated()" class="nav-link">
-          <a th:href="@{/respuesta/all}" target="Principal">
+          <a th:href="@{/pqrs/todo}" target="Principal">
             <i class="fa-solid fa-thumbtack icon"></i>
             <span class="text nav-text">Respuesta</span>
           </a>

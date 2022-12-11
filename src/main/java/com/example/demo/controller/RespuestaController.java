@@ -23,6 +23,8 @@ public class RespuestaController {
     @Autowired
     private PqrsService pqrsService;
 
+
+
     @GetMapping("/respuesta/all")
     public String getRespuestas(Model model){
         List<Respuesta> respuestas = respuestaService.getRespuestas();
@@ -42,7 +44,7 @@ public class RespuestaController {
     @PostMapping("/respuesta/save")
     public String newRespuesta(Respuesta respuesta){
         respuestaService.saveRespuesta(respuesta);
-        return "redirect:/respuesta/all";
+        return "redirect:/pqrs/todo";
     }
 
     @GetMapping("/respuesta/update/{id}")

@@ -17,15 +17,6 @@
         <input type="date" class="form-control" th:field="*{fecha}">
         <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
         <br>
-        <div class="form-group">
-            <label class="form-label">Selecciona un usuario</label>
-            <select id="user" th:field="*{user}" class="form-control" required>
-                <th:block th:each="user: ${users}">
-                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
-                </th:block>
-            </select>
-            <div class="alert alert-warning" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></div>
-        </div>
         <br>
         <label>Tipo:</label>
         <input type="text" class="form-control" th:field="*{tipo}"><br>
@@ -34,7 +25,6 @@
         <label>Descripción:</label>
         <input type="text" class="form-control" th:field="*{descripcion}"><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
-
         <br>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary">Guardar</button>

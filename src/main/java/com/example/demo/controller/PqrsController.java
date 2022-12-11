@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.ReportPqrsDTO;
-import com.example.demo.entity.Pqrs;
-import com.example.demo.entity.User;
-import com.example.demo.entity.Respuesta;
+import com.example.demo.entity.*;
 import com.example.demo.enums.TipoReporteEnum;
+import com.example.demo.repository.PqrsRepository;
 import com.example.demo.service.*;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,20 +33,51 @@ public class PqrsController {
     @Autowired
     private PqrsService pqrsService;
 
+    @Autowired
+    private PqrsRepository pqrsRepository;
 
     @Autowired
     private UserServices userServices;
 
+
+    // Reporte PQRS
     @Autowired
     private ReportPqrsService reportPqrsService;
 
+    // Reporte PQRS
+
+    @GetMapping("/pqrs/todo")
+    public String getPqrssAll(Model model){
+        List<Pqrs> pqrss = pqrsService.getPqrss();
+        model.addAttribute("pqrss", pqrss);
+        return "pqrs/allpqrs";
+    }
+
+
     @GetMapping("/pqrs/all")
     public String getPqrss(Model model){
-        List<Pqrs> Pqrss = pqrsService.getPqrss();
-        List<User> Users = userServices.getUsers();
-        model.addAttribute("pqrss", Pqrss);
-        model.addAttribute("users", Users);
-        return "pqrs/all";
+
+        try {
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User loginUser = (User) authentication.getPrincipal();
+
+            List<Pqrs> Pqrss = pqrsRepository.getPqrsByUser(loginUser.getId());
+
+
+            model.addAttribute("pqrss", Pqrss);
+
+            //List<Pqrs> Pqrss = pqrsService.getPqrss();
+            //List<User> Users = userServices.getUsers();
+
+            //model.addAttribute("users", Users);
+            return "pqrs/all";
+
+
+
+        } catch (Exception ex){
+            return "error";
+        }
     }
 
     @GetMapping("/pqrs/new")
@@ -60,6 +92,10 @@ public class PqrsController {
         if (result.hasErrors()){
             return "/pqrs/new";
         }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User loginUser = (User) authentication.getPrincipal();
+
+        pqrs.setUser(loginUser);
         pqrsService.savePqrs(pqrs);
         return "redirect:/pqrs/all";
     }
@@ -83,6 +119,10 @@ public class PqrsController {
         pqrsService.deletePqrs(id);
         return "redirect:/pqrs/all";
     }
+
+
+
+    // reportes
 
     @GetMapping("/pqrs/report")
     public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
