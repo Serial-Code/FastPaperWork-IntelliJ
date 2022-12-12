@@ -29,9 +29,8 @@
   <thead>
   <tr>
     <th>Categoria</th>
-    <th>Entradas</th>
-    <th>Salidas</th>
     <th>Descripción</th>
+    <th>Cantidad</th>
     <th>Producto</th>
     <th>Acciones</th>
   </tr>
@@ -40,9 +39,8 @@
 
   <tr th:each="inventario: ${inventarios}">
     <td th:text="${inventario.categoria}"></td>
-    <td th:text="${inventario.entradas}"></td>
-    <td th:text="${inventario.salidas}"></td>
     <td th:text="${inventario.descripcion}"></td>
+    <td th:text="${inventario.cantidad}"></td>
     <td th:text="${inventario.product.name}"></td>
     <td>
       <a class="btn btn-info" th:href="@{'/inventario/update/' + ${inventario.id}}">Editar</a>

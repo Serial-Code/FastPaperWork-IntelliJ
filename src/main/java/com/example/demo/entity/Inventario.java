@@ -21,15 +21,13 @@ public class Inventario {
     @Column(name = "categoria" ,length = 30, nullable = false)
     private String categoria;
 
-    @Column(name = "entradas", length = 50, nullable = false)
-    private int entradas;
-
-    @Column(name = "salidas", length = 50, nullable = false)
-    private int salidas;
 
     @NotEmpty(message = "El campo descripcion no puede ser vacio")
     @Column(name = "descripcion",columnDefinition = "text")
     private String descripcion;
+
+    @Column(name = "cantidad")
+    private int cantidad;
 
     @ManyToOne
     @JoinColumn(name = "id")

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Venta;
 import com.example.demo.service.Forma_de_pagoService;
 import com.example.demo.service.ProductService;
+import com.example.demo.service.UserServices;
 import com.example.demo.service.VentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,10 @@ public class VentaController {
     @Autowired
     private VentaService ventaService;
 
+    @Autowired
+    private UserServices userServices;
+
+
     @GetMapping("/venta/all")
     public String getVentas(Model model){
         List<Venta> ventas = ventaService.getVentas();
@@ -37,6 +42,7 @@ public class VentaController {
     public String showNewVenta(Model model){
         model.addAttribute("venta", new Venta());
         model.addAttribute("products", productService.getProducts());
+        model.addAttribute("users", userServices.getUsers());
         model.addAttribute("forma_de_pagos", forma_de_pagoService.getForma_de_pagos());
         return "venta/new";
     }
@@ -54,6 +60,7 @@ public class VentaController {
     public String showUpdateVenta(@PathVariable Long id, Model model){
         model.addAttribute("venta", ventaService.getVenta(id));
         model.addAttribute("products", productService.getProducts());
+        model.addAttribute("users", userServices.getUsers());
         model.addAttribute("forma_de_pagos", forma_de_pagoService.getForma_de_pagos());
         return "venta/update";
     }

@@ -116,8 +116,13 @@ public class PqrsController {
 
     @GetMapping("/pqrs/delete/{id}")
     public String deletePqrs(@PathVariable Long id){
-        pqrsService.deletePqrs(id);
-        return "redirect:/pqrs/all";
+        try {
+            pqrsService.deletePqrs(id);
+            return "redirect:/pqrs/all";
+        } catch (Exception e){
+            return "redirect:/pqrs/all";
+        }
+
     }
 
 

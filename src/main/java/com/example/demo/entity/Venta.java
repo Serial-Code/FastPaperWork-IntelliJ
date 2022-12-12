@@ -1,11 +1,11 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
 import java.sql.Date;
 
 @Entity
@@ -30,11 +30,19 @@ public class Venta {
 
     @ManyToOne
     @JoinColumn(name = "id")
+    @JsonBackReference
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "iduser")
+    @JsonBackReference
+    private User user;
+
+    @ManyToOne
     @JoinColumn (name = "idforma_de_pago")
+    @JsonBackReference
     private Forma_de_pago forma_de_pago;
+
 
 
 }

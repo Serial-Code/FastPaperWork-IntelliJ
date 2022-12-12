@@ -27,6 +27,7 @@
     <table id="ventaTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
     <thead>
     <tr>
+      <th>Usuario</th>
       <th>Fecha</th>
       <th>Producto</th>
       <th>Cantidad</th>
@@ -37,6 +38,7 @@
     </thead>
     <tbody>
     <tr th:each="venta: ${ventas}">
+      <td th:text="${venta.user.firstName}"></td>
       <td th:text="${venta.fecha}"></td>
       <td th:text="${venta.product.name}"></td>
       <td th:text="${venta.cantidad}"></td>
