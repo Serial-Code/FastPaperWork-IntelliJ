@@ -10,17 +10,13 @@
 <div layout:fragment="dashboard">
     <h3>Nueva Respuesta</h3>
     <form th:action="@{'/respuesta/update/' + ${respuesta.id}}" th:object="${respuesta}" method="post">
-        <label>Fecha:</label>
-        <input type="date" id="fecha" class="form-control" th:field="*{fecha}" required><br>
-        <div class="form-group">
             <label class="form-label">Selecciona una PQRS</label>
             <select id="pqrs" th:field="*{pqrs}" class="form-control" required>
                 <th:block th:each="pqrs: ${pqrss}">
-                    <option th:text="${pqrs.descripcion}" th:value="${pqrs.idpqrs}"></option>
+                    <option th:text="${pqrs.descripcion}" th:value="${pqrs.id}"></option>
                 </th:block>
             </select>
             <div class="alert alert-warning" th:if="${#fields.hasErrors('pqrs')}" th:errors="*{pqrs}"></div>
-        </div>
         <br>
         <label>Respuesta:</label>
         <textarea class="form-control" th:field="*{informacion}"></textarea>

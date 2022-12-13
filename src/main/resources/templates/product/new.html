@@ -28,10 +28,6 @@
         </select><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
 
-        <label class="form-label">Cantidad</label>
-        <input type="number" id="quantity" class="form-control" th:field="*{quantity}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
-
         <label class="form-label">Estado</label>
         <select type="text" id="state" class="form-control" th:field="*{state}" required>
             <option value="HABILITADO">HABILITADO</option>

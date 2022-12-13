@@ -64,7 +64,12 @@
             <i class="fa-solid fa-clipboard icon"></i>
             <span class="text nav-text">Inventario</span>
           </a>
-
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/actividad/all}" target="Principal">
+            <i class="fa-solid fa-truck-fast icon"></i>
+            <span class="text nav-text">Actividad</span>
+          </a>
+        </li>
         <li sec:authorize="isAuthenticated()" class="nav-link">
           <a th:href="@{/proveedor/all}" target="Principal">
             <i class="fa-solid fa-truck icon"></i>
@@ -81,6 +86,12 @@
 
         <li sec:authorize="isAuthenticated()" class="nav-link">
           <a th:href="@{/pqrs/todo}" target="Principal">
+            <i class="fa-solid fa-clipboard icon"></i>
+            <span class="text nav-text">PQRS</span>
+          </a>
+        </li>
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/respuesta/all}" target="Principal">
             <i class="fa-solid fa-thumbtack icon"></i>
             <span class="text nav-text">Respuesta</span>
           </a>
