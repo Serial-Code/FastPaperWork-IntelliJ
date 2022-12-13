@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layoutD}">
+      layout:decorate="~{layoutU}">
 <head>
   <meta charset="UTF-8">
 
@@ -27,12 +27,11 @@
     <table id="pedidoTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
     <thead>
     <tr>
-
+      <th>Usuario</th>
       <th>Fecha</th>
       <th>Producto</th>
       <th>Cantidad</th>
       <th>Direccion</th>
-      <th>Descuento</th>
       <th>Forma de pago</th>
       <th>Acciones</th>
 
@@ -40,11 +39,11 @@
     </thead>
     <tbody>
     <tr th:each="pedido: ${pedidos}">
+      <td th:text="${pedido.user.firstName}"></td>
       <td th:text="${pedido.fecha}"></td>
       <td th:text="${pedido.product.name}"></td>
       <td th:text="${pedido.cantidad}"></td>
       <td th:text="${pedido.direccion}"></td>
-      <td th:text="${pedido.descuento}"></td>
       <td th:text="${pedido.forma_de_pago.forma_de_pago}"></td>
       <td>
 

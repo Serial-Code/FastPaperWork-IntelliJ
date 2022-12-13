@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layoutD}">
+      layout:decorate="~{layoutU}">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -14,7 +14,8 @@
       <br>
   <form th:action="@{/pedido/save}" th:object="${pedido}" method="post">
     <label>Fecha:</label>
-    <input type="date" class="form-control" th:field="*{fecha}"><br>
+    <input type="date" class="form-control" th:field="*{fecha}" required><br>
+    <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
     <div class="form-group">
       <label class="form-label">Seleccione un producto</label>
       <select id="product" th:field="*{product}" class="form-control" required>
@@ -23,12 +24,13 @@
         </th:block>
       </select><br>
     </div>
+    <div class="alert alert-warning" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></div>
     <label>Cantidad:</label>
-    <input type="text" class="form-control" th:field="*{cantidad}"><br>
+    <input type="text" class="form-control" th:field="*{cantidad}" required><br>
+    <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
     <label>Direccion:</label>
-    <input type="text" class="form-control" th:field="*{direccion}"><br>
-    <label>Descuento:</label>
-    <input type="number" class="form-control" th:field="*{descuento}"><br>
+    <input type="text" class="form-control" th:field="*{direccion}" required><br>
+    <div class="alert alert-warning" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
     <div class="form-group">
       <label class="form-label">Seleccione una forma de pago</label>
       <select id="forma_de_pago" th:field="*{forma_de_pago}" class="form-control" required>
@@ -37,6 +39,7 @@
         </th:block>
       </select>
     </div><br>
+    <div class="alert alert-warning" th:if="${#fields.hasErrors('forma_de_pago')}" th:errors="*{forma_de_pago}"></div>
     <div class="d-grid gap-2">
       <button type="submit" class="btn btn-primary">Guardar</button>
       <a class="btn btn-secondary active" th:href="@{/pedido/all}">Cancelar</a>

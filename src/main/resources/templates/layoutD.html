@@ -98,12 +98,6 @@
         </li>
 
         <li sec:authorize="isAuthenticated()" class="nav-link">
-          <a th:href="@{/pedido/all}" target="Principal">
-            <i class="fa-brands fa-shopify icon"></i>
-            <span class="text nav-text">Pedido</span>
-          </a>
-        </li>
-        <li sec:authorize="isAuthenticated()" class="nav-link">
           <a th:href="@{/tracking/all}" target="Principal">
             <i class="fa-solid fa-truck-fast icon"></i>
             <span class="text nav-text">Seguimiento</span>
