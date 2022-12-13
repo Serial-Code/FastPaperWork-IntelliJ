@@ -48,7 +48,10 @@ public class ProveedorController {
         }
 
         @PostMapping("/proveedor/update/{id}")
-        public String updateProveedor(@PathVariable Integer id,Proveedor proveedor){
+        public String updateProveedor(@PathVariable Integer id,@Valid Proveedor proveedor,BindingResult result, Model model){
+            if(result.hasErrors()){
+                return "/proveedor/new";
+            }
             proveedor.setId(id);
             proveedorService.updateProveedor(proveedor);
             return "redirect:/proveedor/all";

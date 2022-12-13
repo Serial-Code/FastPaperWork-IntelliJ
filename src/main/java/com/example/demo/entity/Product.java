@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "product")
@@ -20,22 +19,26 @@ public class Product {
     private Long id;
 
     @NotEmpty(message = "El campo nombre no puede ser vacio")
-    @Size(min = 3, max = 40)
-    @Column(length = 50, nullable = false)
+    @Column
     private String name;
 
     @NotEmpty(message = "El campo categoria no puede ser vacio")
-    @Column(length = 30, nullable = false)
+    @Column
     private String category;
 
+    @NotNull(message="La cantidad es obligatorio")
+    @Min(value = 1, message = "La cantidad minima es 1")
     @Column
     private int quantity;
 
     @NotEmpty(message = "El campo estado no puede ser vacio")
-    @Column(length = 40, nullable = false)
+    @Column
     private String state;
 
+    @NotNull(message="El precio es obligatorio")
     @Column
+    @Min(value = 50, message = "El precio total debe ser minimo $50 pesos")
+    @Max(value = 100000, message = "El precio total debe ser maximo $100.000 pesos")
     private Double price;
 
     @ManyToOne

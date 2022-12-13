@@ -15,44 +15,36 @@
     <form th:action="@{/product/save}" th:object="${product}" method="post">
 
 
-        <label class="form-label">Nombre</label>
-        <input type="text" id="name" class="form-control" th:field="*{name}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-
-
-        <label class="form-label">Categoria</label>
-        <select type="text" id="category" class="form-control" th:field="*{category}" required>
+        <label>Nombre:</label>
+        <input type="text" class="form-control" th:field="*{name}"><br>
+        <label>Categoria:</label>
+        <select type="text" id="category" class="form-control" th:field="*{category}" >
             <option value="PAPELERIA">PAPELERIA</option>
             <option value="DULCERIA">DULCERIA</option>
             <option value="BISUTERIA">BISUTERIA</option>
         </select><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
-
-        <label class="form-label">Estado</label>
-        <select type="text" id="state" class="form-control" th:field="*{state}" required>
+        <label>Cantidad:</label>
+        <input type="number" class="form-control" th:field="*{quantity}"><br>
+        <label>State:</label>
+        <select type="text" id="state" class="form-control" th:field="*{state}" >
             <option value="HABILITADO">HABILITADO</option>
             <option value="DESABILITADO">DESHABILITADO</option>
         </select><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
-
-
-        <label class="form-label">Precio</label>
-        <input type="text" id="price" class="form-control" th:field="*{price}" required><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-
+        <label>Precio:</label>
+        <input type="text" class="form-control" th:field="*{price}"><br>
         <div class="form-group">
             <label class="form-label">Selecciona un nombre</label>
-        <select id="proveedor" th:field="*{proveedor}" class="form-control" required>
-            <th:block th:each="proveedor: ${proveedores}">
-                <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
-            </th:block>
-        </select>
+            <select id="proveedor" th:field="*{proveedor}" class="form-control" >
+                <th:block th:each="proveedor: ${proveedores}">
+                    <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
+                </th:block>
+            </select>
             <div class="alert alert-warning" th:if="${#fields.hasErrors('proveedor')}" th:errors="*{proveedor}"></div>
         </div>
         <br>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a class="btn btn-secondary active" th:href="@{/product/all}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary active" th:href="@{/product/all}">Cancelar</a>
         </div>
     </form>
         </div>

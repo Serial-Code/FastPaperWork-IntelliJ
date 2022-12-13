@@ -37,8 +37,9 @@ public class CalificacionController {
         return "calificacion/new";
     }
     @PostMapping("/calificacion/save")
-    public String newCalificacion(@Valid Calificacion calificacion, BindingResult result){
+    public String newCalificacion(@Valid Calificacion calificacion, BindingResult result, Model model){
         if (result.hasErrors()){
+            model.addAttribute("products", productService.getProducts());
             return "/calificacion/new";
         }
         calificacionService.saveCalificacion(calificacion);
@@ -51,7 +52,11 @@ public class CalificacionController {
         return "calificacion/update";
     }
     @PostMapping("/calificacion/update/{id}")
-    public String updateCalificacion(@PathVariable Long id,Calificacion calificacion){
+    public String updateCalificacion(@PathVariable Long id,@Valid Calificacion calificacion,BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("products", productService.getProducts());
+            return "/calificacion/new";
+        }
         calificacion.setId(id);
         calificacionService.updateCalificacion(calificacion);
         return "redirect:/calificacion/all";

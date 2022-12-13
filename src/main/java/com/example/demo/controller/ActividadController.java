@@ -40,8 +40,9 @@ public class ActividadController {
     }
 
     @PostMapping("/actividad/save")
-    public String newActividad(@Valid Actividad actividad, BindingResult result) {
+    public String newActividad(@Valid Actividad actividad, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("products", productService.getProducts());
             return "/actividad/new";
         }
         actividadService.saveActividad(actividad);

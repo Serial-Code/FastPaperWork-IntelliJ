@@ -58,8 +58,9 @@ public class ProductViewController {
     }
 
     @PostMapping("/product/save")
-    public String newProduct(@Valid Product product, BindingResult result){
+    public String newProduct(@Valid Product product, BindingResult result, Model model){
         if (result.hasErrors()){
+            model.addAttribute("proveedores", proveedorService.getProveedores());
             return "/product/new";
         }
         productService.save(product);
@@ -74,7 +75,10 @@ public class ProductViewController {
     }
 
     @PostMapping("/product/update/{id}")
-    public String updateProduct(@PathVariable Long id, Product product){
+    public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result, Model model) {
+    if (result.hasErrors()){
+        model.addAttribute("proveedores", proveedorService.getProveedores());
+    }
         product.setId(id);
         productService.updateProduct(product);
         return "redirect:/product/all";
