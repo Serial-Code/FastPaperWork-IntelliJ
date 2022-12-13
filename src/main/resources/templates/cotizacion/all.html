@@ -3,17 +3,16 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layoutU}">
 <head>
-<<<<<<< HEAD
+
   <meta charset="UTF-8">
   <title>Cotización</title>
   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-=======
+
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
->>>>>>> 3125500ee5de58dbe9ba8cd7475dc26a041c641b
 
 </head>
 <body>
@@ -30,43 +29,8 @@
     </div>
   </div>
   <div class="table-responsive">
-
-<<<<<<< HEAD
-    <table id="cotizacionTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
-    <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Usuario</th>
-      <th>Producto</th>
-      <th>Total</th>
-      <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each=" cotizacion: ${cotizaciones}">
-      <td th:text="${cotizacion.fecha}"></td>
-      <td th:text="${cotizacion.user.firstName}"></td>
-      <td th:text="${cotizacion.product.name}"></td>
-      <td th:text="${cotizacion.total}"></td>
-      <td>
-        <a class="btn btn-primary" th:href="@{'/cotizacion/update/' + ${cotizacion.id}}">Editar</a>
-        <a class="btn btn-danger" th:href="@{'/cotizacion/delete/' + ${cotizacion.id}}">Eliminar</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<div layout:fragment="addjs">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#cotizacionTable').DataTable();
-    });
-  </script>
-=======
-        <tr th:each=" cotizacion: ${cotizaciones}">
+      <table id="cotizacionTable" class="table table-bordered table-striped">
+      <tr th:each=" cotizacion: ${cotizaciones}">
             <td th:text="${cotizacion.fecha}"></td>
             <td th:text="${cotizacion.total}"></td>
             <td th:text="${cotizacion.product.name}"></td>
@@ -90,7 +54,6 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/js/delete/functionCotizacion.js"></script>
->>>>>>> 3125500ee5de58dbe9ba8cd7475dc26a041c641b
 
 </div>
 

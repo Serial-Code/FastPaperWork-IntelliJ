@@ -26,8 +26,8 @@
     <tr>
       <td>Fecha</td>
       <td>Producto</td>
-      <td>Observaciones</td>
       <td>Puntuación</td>
+      <td>Observaciones</td>
       <td>Acciones</td>
     </tr>
     </thead>
@@ -39,8 +39,7 @@
       <td th:text="${calificacion.observaciones}"></td>
       <td>
         <a class="btn btn-info" th:href="@{'/calificacion/update/' + ${calificacion.id}}">Editar</a>
-        <a class="btn btn-danger" th:href="@{'/calificacion/delete/' + ${calificacion.id}}">Eliminar</a>
-      </td>
+        <a class="btn btn-danger" th:onclick="eliminar([[${calificacion.id}]])">Eliminar</a>      </td>
     </tr>
     </tbody>
   </table>
@@ -55,6 +54,8 @@
       $('#calificacionTable').DataTable();
     });
   </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/delete/functionCalificacion.js"></script>
 </div>
 </body>
 </html>

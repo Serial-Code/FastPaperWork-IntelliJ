@@ -27,7 +27,6 @@
     <table id="respuestaTable" class="table table-striped table-bordered shadow-sm" style="width: 100%">
     <thead>
     <tr>
-      <th>Fecha</th>
       <th>PQRS</th>
       <th>Respuesta</th>
       <th>Acciones</th>
@@ -35,7 +34,7 @@
     </thead>
     <tbody>
     <tr th:each="respuesta: ${respuestas}">
-      <td th:text="${respuesta.fecha}"></td>
+      <td th:text="${respuesta.pqrs.descripcion}">
       <td th:text="${respuesta.informacion}">
       <td>
         <a class="btn btn-info" th:href="@{'/respuesta/update/' + ${respuesta.id}}">Editar</a>

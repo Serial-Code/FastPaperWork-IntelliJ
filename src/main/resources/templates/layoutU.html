@@ -60,12 +60,6 @@
           </a>
         </li>
         <li sec:authorize="isAuthenticated()" class="nav-link">
-          <a th:href="@{/respuesta/all}" target="Principal">
-            <i class="fa-solid fa-thumbtack icon"></i>
-            <span class="text nav-text">Respuesta</span>
-          </a>
-        </li>
-        <li sec:authorize="isAuthenticated()" class="nav-link">
           <a th:href="@{/calificacion/all}" target="Principal">
             <i class="fa-solid fa-truck icon"></i>
             <span class="text nav-text">Calificación</span>
