@@ -1,7 +1,7 @@
 function eliminar(id){
 swal({
   title: "Esta seguro de eliminar?",
-  text: "Una vez borrado, no podrá recuperar este archivo!",
+  text: "Una vez borrado, no podrá recuperar esta forma de pago!",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -9,20 +9,20 @@ swal({
 .then((ok) => {
   if (ok) {
 	$.ajax({
-		url:"/eliminar/forma_de_pago/"+id,
+		url:"/forma_de_pago/delete/"+id,
 		success: function(res) {
 			console.log(res);
 		}
 	});
-    swal("¡Puf! ¡Tu archivo ha sido borrado!", {
+    swal("¡Puf! ¡Tu forma de pago ha sido borrado!", {
       icon: "success",
     }).then((ok)=>{
 		if(ok){
-			location.href="/listar/forma_de_pago";
+			location.href="/forma_de_pago/all";
 		}
 });
   } else {
-    swal("Your imaginary file is safe!");
+    swal("Tu forma de pago esta a salvo!");
   }
 });
 	
