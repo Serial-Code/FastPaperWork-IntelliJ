@@ -78,6 +78,15 @@
             <span class="text nav-text">Cotización</span>
           </a>
         </li>
+
+
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/pedido/all}" target="Principal">
+            <i class="fa-solid fa-tag icon"></i>
+            <span class="text nav-text">Pedido</span>
+          </a>
+        </li>
+
       </ul>
     </div>
 
