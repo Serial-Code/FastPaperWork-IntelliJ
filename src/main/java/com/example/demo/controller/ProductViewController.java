@@ -1,11 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.DTO.ReportInventarioDTO;
 import com.example.demo.DTO.ReportProductsDTO;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Proveedor;
 import com.example.demo.enums.TipoReporteEnum;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.ProveedorService;
+import com.example.demo.service.ReportProductoService;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -34,6 +36,9 @@ public class ProductViewController {
 
     @Autowired
     private ProveedorService proveedorService;
+
+    @Autowired
+    private ReportProductoService reportProductoService;
 
 
 
@@ -84,6 +89,29 @@ public class ProductViewController {
     public String deleteProduct(@PathVariable Long id){
         productService.deleteProduct(id);
         return "redirect:/product/all";
+    }
+
+    @GetMapping("/product/categoria/report")
+    public String reporteProducto(){
+        return "product/report";
+    }
+
+
+    @GetMapping("/product/report")
+    public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
+        ReportProductsDTO dto = reportProductoService.obtenerReporteProducto(params);
+
+        InputStreamResource streamResource = new InputStreamResource(dto.getStream());
+
+        MediaType mediaType = null;
+        if(params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())){
+            mediaType = MediaType.APPLICATION_OCTET_STREAM;
+        } else {
+            mediaType = MediaType.APPLICATION_PDF;
+        }
+
+        return ResponseEntity.ok().header("Content-Disposition", "inline; filename=\"" + dto.getFileName() + "\"")
+                .contentLength(dto.getLength()).contentType(mediaType).body(streamResource);
     }
 
 

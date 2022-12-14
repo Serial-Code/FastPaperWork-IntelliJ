@@ -13,13 +13,14 @@
         <h3>Nueva PQRS</h3>
         <br>
     <form th:action="@{/pqrs/save}" th:object="${pqrs}" method="post">
-        <label>Fecha:</label>
-        <input type="date" class="form-control" th:field="*{fecha}">
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
-        <br>
-        <br>
         <label>Tipo:</label>
-        <input type="text" class="form-control" th:field="*{tipo}"><br>
+        <label>Tipo:</label>
+        <select type="text" id="tipo" class="form-control" th:field="*{tipo}" >
+            <option value="SUGERENCIA">SUGERENCIA</option>
+            <option value="QUEJA">QUEJA</option>
+            <option value="RECLAMO">RECLAMO</option>
+            <option value="PETICION">PETICION</option>
+        </select><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></div>
         <br>
         <label>Descripción:</label>
