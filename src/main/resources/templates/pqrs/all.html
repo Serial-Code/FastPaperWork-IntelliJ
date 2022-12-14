@@ -44,7 +44,7 @@
       <td th:text="${pqrs.descripcion}"></td>
       <td th:text="${pqrs.contenido}"></td>
       <td>
-        <a class="btn btn-danger" th:href="@{'/pqrs/delete/' + ${pqrs.id}}">Eliminar</a>
+        <a class="btn btn-danger" th:onclick="eliminar([[${pqrs.id}]])">Eliminar</a>
       </td>
     </tr>
     </tbody>
@@ -58,6 +58,7 @@
 </div>
 </div>
 <div layout:fragment="addjs">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   <script>
@@ -65,6 +66,10 @@
       $('#pqrsTable').DataTable();
     });
   </script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/delete/functionPQRS.js"></script>
+
 </div>
 
 </body>

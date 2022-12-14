@@ -5,7 +5,10 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "proveedor")
@@ -17,14 +20,18 @@ public class Proveedor {
     @Column(name = "idproveedor", unique = true)
     private Integer id;
 
-    @Column(length = 50, nullable = false)
-    private Integer RUT;
+    @NotNull(message = "El campo RUT no puede ser vacio")
+    @Min(value = 10, message = "El campo RUT minimo es de 10 digitos")
+    @Column(name = "RUT",length = 10, nullable = false)
+    private int RUT;
 
+    @Min(value = 10, message = "El campo telefono minimo es de 10 digitos")
+    @Column(name = "telefono")
+    private int telefono;
     @NotEmpty(message = "El campo nombre no puede ser vacio")
-    @Column(length = 50, nullable = false)
+    @Column(name = "nombre_completo",length = 50, nullable = false)
     private String nombre_completo;
 
-    @Column(name = "telefono", length = 10, nullable = false)
-    private Integer telefono;
+
 
 }

@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<<<<<<< HEAD
-<html xmlns:th="http://www.thymeleaf.org"  lang="en"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layoutD}">
-<head>
-    <meta charset="UTF-8">
-    <title>Seguimiento</title>
-
-  <th:block layout:fragment="addhead">
-    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-  </th:block>
-=======
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layoutU}">
@@ -20,8 +6,6 @@
     <title>Seguimiento de envio</title>
   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-
->>>>>>> 3125500ee5de58dbe9ba8cd7475dc26a041c641b
 </head>
 <body>
 <div layout:fragment="dashboard">
@@ -64,33 +48,6 @@
   </table>
 
 </div>
-<<<<<<< HEAD
 </div>
-<div layout:fragment="addjs">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#trackingTable').DataTable();
-    });
-  </script>
-</div>
-=======
-<div layout:fragment="addjs">
->>>>>>> 3125500ee5de58dbe9ba8cd7475dc26a041c641b
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#seguimientoTable').DataTable();
-    });
-  </script>
-
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="/js/delete/functionSeguimiento.js"></script>
-
-</div>
-
 </body>
 </html>

@@ -19,45 +19,51 @@ public class Forma_de_pagoController {
     private Forma_de_pagoService forma_de_pagoService;
 
 
-    @GetMapping("/forma_de_pago/all")
+    @GetMapping("/formaPago/all")
     public String getForma_de_pagos(Model model) {
         List<Forma_de_pago> forma_de_pagos = forma_de_pagoService.getForma_de_pagos();
         model.addAttribute("forma_de_pagos", forma_de_pagos);
-        return "forma_de_pago/all";
+        return "formaPago/all";
     }
 
-    @GetMapping("/forma_de_pago/new")
+    @GetMapping("/formaPago/new")
     public String showNewForma_de_pago(Model model){
         model.addAttribute("forma_de_pago", new Forma_de_pago());
-        return "forma_de_pago/new";
+        return "formaPago/new";
     }
 
-    @PostMapping("/forma_de_pago/save")
-    public String newForma_de_pago(@Valid Forma_de_pago forma_de_pago, BindingResult result){
+    @PostMapping("/formaPago/save")
+    public String newForma_de_pago(@Valid Forma_de_pago forma_de_pago, BindingResult result, Model model){
         if (result.hasErrors()){
-            return "/forma_de_pago/new";
+            model.addAttribute("forma_de_pago", forma_de_pagoService.getForma_de_pagos());
+            return "/formaPago/new";
         }
         forma_de_pagoService.save(forma_de_pago);
-        return "redirect:/forma_de_pago/all";
+        return "redirect:/formaPago/all";
     }
 
-    @GetMapping("/forma_de_pago/update/{id}")
+    @GetMapping("/formaPago/update/{id}")
     public String showUpdateForma_de_pago(@PathVariable Integer id, Model model){
-        model.addAttribute("forma_de_pago", forma_de_pagoService.getForma_de_pagos(id));
-        return "forma_de_pago/update";
+        model.addAttribute("formaPago", forma_de_pagoService.getForma_de_pagos(id));
+        return "formaPago/update";
     }
 
-    @PostMapping("/forma_de_pago/update/{id}")
-    public String updateForma_de_pago(@PathVariable Integer id, Forma_de_pago forma_de_pago){
+    @PostMapping("/formaPago/update/{id}")
+    public String updateForma_de_pago(@PathVariable Integer id,@Valid Forma_de_pago forma_de_pago, Model model, BindingResult result){
+        if (result.hasErrors()){
+            model.addAttribute("forma_de_pago", forma_de_pagoService.getForma_de_pagos());
+            return "/formaPago/new";
+        }
         forma_de_pago.setIdforma_de_pago(id);
-        forma_de_pagoService.updateForma_de_pagos(forma_de_pago);
-        return "redirect:/forma_de_pago/all";
+        forma_de_pagoService.save(forma_de_pago);
+        return "redirect:/formaPago/all";
+
     }
 
-    @GetMapping("/forma_de_pago/delete/{id}")
+    @GetMapping("/formaPago/delete/{id}")
     public String deleteForma_de_pago(@PathVariable Integer id){
         forma_de_pagoService.deleteForma_de_pago(id);
-        return "redirect:/forma_de_pago/all";
+        return "redirect:/formaPago/all";
     }
 
 }

@@ -48,8 +48,11 @@ public class CotizacionController {
     }
 
     @PostMapping("/cotizacion/save")
-    public String newCotizacion(@Valid Cotizacion cotizacion, BindingResult result){
+    public String newCotizacion(@Valid Cotizacion cotizacion, BindingResult result, Model model){
         if (result.hasErrors()){
+            model.addAttribute("cotizaciones", cotizacionService.getCotizaciones());
+            model.addAttribute("products", productService.getProducts());
+            model.addAttribute("users", userServices.getUsers());
             return "/cotizacion/new";
         }
         cotizacionService.saveCotizacion(cotizacion);
@@ -65,7 +68,12 @@ public class CotizacionController {
     }
 
     @PostMapping("/cotizacion/update/{id}")
-    public String updateCotizacion(@PathVariable Long id, Cotizacion cotizacion){
+    public String updateCotizacion(@PathVariable Long id,@Valid Cotizacion cotizacion, BindingResult result, Model model){
+        if (result.hasErrors()){
+            model.addAttribute("products", productService.getProducts());
+            model.addAttribute("users", userServices.getUsers());
+            return "/cotizacion/update";
+        }
         cotizacion.setId(id);
         cotizacionService.updateCotizacion(cotizacion);
         return "redirect:/cotizacion/all";

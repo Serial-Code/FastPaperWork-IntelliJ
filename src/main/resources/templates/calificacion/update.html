@@ -13,9 +13,6 @@
             <h3>Actualización calificación</h3>
             <br>
     <form th:action="@{'/calificacion/update/' + ${calificacion.id}}" th:object="${calificacion}" method="post">
-        <label>Fecha:</label>
-        <input type="date" class="form-control" th:field="*{fecha}"><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
 
         <br>
         <div class="form-group">

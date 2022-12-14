@@ -13,26 +13,26 @@
     <h3>Actualizar Producto</h3>
             <br>
     <form th:action="@{'/product/update/' + ${product.id}}" th:object="${product}" method="post">
-        <label>Name:</label>
+        <label>Nombre:</label>
         <input type="text" class="form-control" th:field="*{name}"><br>
-        <label>Category:</label>
-        <select type="text" id="category" class="form-control" th:field="*{category}" required>
+        <label>Categoria:</label>
+        <select type="text" id="category" class="form-control" th:field="*{category}" >
             <option value="PAPELERIA">PAPELERIA</option>
             <option value="DULCERIA">DULCERIA</option>
             <option value="BISUTERIA">BISUTERIA</option>
         </select><br>
-        <label>Quantity:</label>
+        <label>Cantidad:</label>
         <input type="number" class="form-control" th:field="*{quantity}"><br>
         <label>State:</label>
-        <select type="text" id="state" class="form-control" th:field="*{state}" required>
+        <select type="text" id="state" class="form-control" th:field="*{state}" >
             <option value="HABILITADO">HABILITADO</option>
             <option value="DESABILITADO">DESHABILITADO</option>
         </select><br>
-        <label>Price:</label>
+        <label>Precio:</label>
         <input type="text" class="form-control" th:field="*{price}"><br>
         <div class="form-group">
             <label class="form-label">Selecciona un nombre</label>
-            <select id="proveedor" th:field="*{proveedor}" class="form-control" required>
+            <select id="proveedor" th:field="*{proveedor}" class="form-control" >
                 <th:block th:each="proveedor: ${proveedores}">
                     <option th:text="${proveedor.nombre_completo}" th:value="${proveedor.id}"></option>
                 </th:block>

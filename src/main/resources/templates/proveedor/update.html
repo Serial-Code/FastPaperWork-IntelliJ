@@ -15,19 +15,25 @@
     <form th:action="@{'/proveedor/update/' + ${proveedor.id}}" th:object="${proveedor}" method="post">
         <label>RUT:</label>
         <input type="number" class="form-control" th:field="*{RUT}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('RUT')}" th:errors="*{RUT}"></div>
 
         <label>Nombre:</label>
         <input type="text" class="form-control" th:field="*{nombre_completo}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre_completo')}" th:errors="*{nombre_completo}"></div>
+
 
         <label>Telefono:</label>
         <input type="number" class="form-control" th:field="*{telefono}"><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" ></div>
 
         <br>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a class="btn btn-secondary active" th:href="@{/provedor/all}">Cancelar</a>
-        </div>    </form>
+            <a class="btn btn-secondary active" th:href="@{/proveedor/all}">Cancelar</a>
+        </div>
+    </form>
 </div>
     </div>
+</div>
 </body>
 </html>
