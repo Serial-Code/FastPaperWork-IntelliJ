@@ -28,6 +28,7 @@ public class Venta {
     @Column
     private Double total;
 
+
     @Column(name = "estado")
     private String estado;
 
