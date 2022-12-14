@@ -100,7 +100,7 @@ public class PedidoController {
         User loginUser = (User) authentication.getPrincipal();
 
 
-        if (pedido.getCantidad() < 1) {
+        if (pedido.getCantidad() < 1){
             result.hasErrors();
             model.addAttribute("products", productService.getProducts());
             model.addAttribute("forma_de_pagos", forma_de_pagoService.getForma_de_pagos());
@@ -109,7 +109,6 @@ public class PedidoController {
         } else {
             pedido.setTotal(pedido.getCantidad() * pedido.getProduct().getPrice());
         }
-
 
         pedido.setUser(loginUser);
         pedidoService.savePedido(pedido);

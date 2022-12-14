@@ -26,17 +26,6 @@ public class Product {
     @Column
     private String category;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    @NotNull(message="La cantidad es obligatorio")
->>>>>>> ad5e44daa8902db8beadc649e5f44190d5852d59
-    @Min(value = 1, message = "La cantidad minima es 1")
-    @Column
-    private int quantity;
-
->>>>>>> c767fc00d4c7ed1f21093d2c2ee7eb6c2c447c8f
     @NotEmpty(message = "El campo estado no puede ser vacio")
     @Column
     private String state;
