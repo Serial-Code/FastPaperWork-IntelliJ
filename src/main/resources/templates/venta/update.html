@@ -36,9 +36,11 @@
 
         <input type="number" class="form-control" th:field="*{total}" hidden><br>
 
+        <label th:text="Seleccione">Seleccione:</label>
         <select type="date" class="form-control" th:field="*{estado}" >
             <option value="CONFIRMADO">CONFIRMAR</option>
         </select>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
 
         <input type="text" class="form-control" th:field="*{direccion}" hidden><br>
 
