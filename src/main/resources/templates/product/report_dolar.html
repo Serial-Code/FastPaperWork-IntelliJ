@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutD}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="dashboard">
+  <form th:action="@{/product_dolar/report}" method="GET">
+
+    <div class="mt-5"></div>
+    <h5  class="justify-content-center text-center">Reportes de producto</h5>
+    <div class="mt-5"></div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label">Id producto</label>
+      <input type="number" placeholder="producto" name="producto" class="form-control" />
+      <br>
+    </div>
+
+    <!-- Password input -->
+    <div class="mb-3">
+      <label class="form-label">Tipo de archivo</label>
+      <select class="form-control" name="tipo" type="text">
+        <option value="PDF">PDF</option>
+        <option value="EXCEL">EXCEL</option>
+      </select>
+
+    </div>
+
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block px-5"> Generar reporte </button>
+
+  </form>
+
+</div>
+</body>
+</html>

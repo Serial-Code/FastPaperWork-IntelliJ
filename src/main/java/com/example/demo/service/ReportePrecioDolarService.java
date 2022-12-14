@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.DTO.ReportProductsDTO;
+import com.example.demo.DTO.ReportePrecioDolarDTO;
 import com.example.demo.common.JasperReportManager;
 import com.example.demo.enums.TipoReporteEnum;
 import net.sf.jasperreports.engine.JRException;
@@ -14,8 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
 
+
 @Service
-public class ReportProductoService {
+public class ReportePrecioDolarService {
 
     @Autowired
     private JasperReportManager reportManager;
@@ -23,10 +24,11 @@ public class ReportProductoService {
     @Autowired
     private DataSource dataSource;
 
-    public ReportProductsDTO obtenerReporteProducto(Map<String, Object> params)
+    public ReportePrecioDolarDTO obtenerReportePrecioDolar(Map<String, Object> params)
             throws JRException, IOException, SQLException {
-        String fileName = "reporte_producto";
-        ReportProductsDTO dto = new ReportProductsDTO();
+        String fileName = "Reporte_precio_dolar";
+
+        ReportePrecioDolarDTO dto = new ReportePrecioDolarDTO();
         String extension = params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name()) ? ".xlsx" : ".pdf";
         dto.setFileName(fileName+extension);
 
@@ -39,5 +41,5 @@ public class ReportProductoService {
 
         return dto;
     }
-
 }
+
