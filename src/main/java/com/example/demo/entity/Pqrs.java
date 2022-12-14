@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -27,10 +28,9 @@ public class Pqrs {
     @Column(columnDefinition = "text")
     private String descripcion;
 
-
+    @UpdateTimestamp
     @Column
     private Date fecha;
-
 
     @Column
     private String contenido;

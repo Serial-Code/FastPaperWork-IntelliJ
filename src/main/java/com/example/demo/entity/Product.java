@@ -26,6 +26,10 @@ public class Product {
     @Column
     private String category;
 
+<<<<<<< HEAD
+=======
+    @NotNull(message="La cantidad es obligatorio")
+>>>>>>> ad5e44daa8902db8beadc649e5f44190d5852d59
     @Min(value = 1, message = "La cantidad minima es 1")
     @Column
     private int quantity;
