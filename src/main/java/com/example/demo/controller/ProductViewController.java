@@ -79,6 +79,7 @@ public class ProductViewController {
     public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result, Model model) {
     if (result.hasErrors()){
         model.addAttribute("proveedores", proveedorService.getProveedores());
+        return "/product/new";
     }
         product.setId(id);
         productService.updateProduct(product);

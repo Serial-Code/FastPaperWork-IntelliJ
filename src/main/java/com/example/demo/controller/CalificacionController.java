@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Calificacion;
+import com.example.demo.entity.Pqrs;
 import com.example.demo.entity.Product;
 import com.example.demo.service.CalificacionService;
 import com.example.demo.service.ProductService;
@@ -23,6 +24,12 @@ public class CalificacionController {
     @Autowired
     private ProductService productService;
 
+    @GetMapping("/calificacion/todo")
+    public String getCalificacionsAll(Model model){
+        List<Calificacion> calificaciones = calificacionService.getCalificaciones();
+        model.addAttribute("calificaciones", calificaciones);
+        return "calificacion/allcalificacion";
+    }
     @GetMapping("/calificacion/all")
     public String getCalificaciones(Model model){
         List<Calificacion> calificaciones = calificacionService.getCalificaciones();
