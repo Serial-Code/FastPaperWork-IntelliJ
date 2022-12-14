@@ -80,9 +80,16 @@ public class ProductViewController {
 
     @PostMapping("/product/update/{id}")
     public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result, Model model) {
+<<<<<<< HEAD
+    if (result.hasErrors()){
+        model.addAttribute("proveedores", proveedorService.getProveedores());
+        return "/product/new";
+    }
+=======
         if (result.hasErrors()) {
             model.addAttribute("proveedores", proveedorService.getProveedores());
         }
+>>>>>>> a3e7a87c7aa3fe41ac9787f5bd008bc6c818d6c6
         product.setId(id);
         productService.updateProduct(product);
         return "redirect:/product/all";

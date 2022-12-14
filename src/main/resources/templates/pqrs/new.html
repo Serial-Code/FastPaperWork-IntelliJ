@@ -14,7 +14,6 @@
         <br>
     <form th:action="@{/pqrs/save}" th:object="${pqrs}" method="post">
         <label>Tipo:</label>
-        <label>Tipo:</label>
         <select type="text" id="tipo" class="form-control" th:field="*{tipo}" >
             <option value="SUGERENCIA">SUGERENCIA</option>
             <option value="QUEJA">QUEJA</option>

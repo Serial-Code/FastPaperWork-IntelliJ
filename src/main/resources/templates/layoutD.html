@@ -96,6 +96,12 @@
             <span class="text nav-text">Respuesta</span>
           </a>
         </li>
+        <li sec:authorize="isAuthenticated()" class="nav-link">
+          <a th:href="@{/calificacion/todo}" target="Principal">
+            <i class="fa-solid fa-truck icon"></i>
+            <span class="text nav-text">Calificación</span>
+          </a>
+        </li>
 
 
 

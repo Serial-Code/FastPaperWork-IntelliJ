@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Value;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -24,6 +25,7 @@ public class Pedido {
     @Column(name = "idpedido", unique = true)
     private Long id;
 
+    @UpdateTimestamp
     @Column
     private Date fecha;
 
