@@ -41,8 +41,7 @@ public class PqrsController {
 
 
     // Reporte PQRS
-    @Autowired
-    private ReportPqrsService reportPqrsService;
+
 
     // Reporte PQRS
 
@@ -128,21 +127,4 @@ public class PqrsController {
 
 
     // reportes
-
-    @GetMapping("/pqrs/report")
-    public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
-        ReportPqrsDTO dto = reportPqrsService.obtenerReportePqrs(params);
-
-        InputStreamResource streamResource = new InputStreamResource(dto.getStream());
-
-        MediaType mediaType = null;
-        if(params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())){
-            mediaType = MediaType.APPLICATION_OCTET_STREAM;
-        } else {
-            mediaType = MediaType.APPLICATION_PDF;
-        }
-
-        return ResponseEntity.ok().header("Content-Disposition", "inline; filename=\"" + dto.getFileName() + "\"")
-                .contentLength(dto.getLength()).contentType(mediaType).body(streamResource);
-    }
 }

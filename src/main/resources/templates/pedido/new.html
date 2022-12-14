@@ -26,8 +26,10 @@
     </div>
     <div class="alert alert-warning" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></div>
     <label>Cantidad:</label>
-    <input type="text" class="form-control" th:field="*{cantidad}" required><br>
+    <input type="number" class="form-control"  th:field="*{cantidad}" required><br>
     <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+
+
     <label>Direccion:</label>
     <input type="text" class="form-control" th:field="*{direccion}" required><br>
     <div class="alert alert-warning" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>

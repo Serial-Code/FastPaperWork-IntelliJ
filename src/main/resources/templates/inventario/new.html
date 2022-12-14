@@ -23,12 +23,8 @@
         </select><br>
 
         <label>Descripción:</label>
-        <input type="text" class="form-control" th:field="*{descripcion}"><br>
+        <input type="text" class="form-control" th:field="*{descripcion}" required><br>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
-
-        <label>Cantidad</label>
-        <input id="cantidad" type="number" class="form-control" th:field="*{cantidad}">
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
 
         <div class="form-group">
             <label class="form-label">Selecciona un producto</label>

@@ -12,7 +12,6 @@
         <div class="col-md-6">
             <h3>Actualizar </h3>
             <br>
-            <form th:action="@{/inventario/save}" th:object="${inventario}" method="post">
     <form th:action="@{'/inventario/update/' + ${inventario.id}}" th:object="${inventario}" method="post">
         <label>Categoria:</label>
         <select type="text" id="category" class="form-control" th:field="*{categoria}" required>
@@ -20,17 +19,14 @@
             <option value="DULCERIA">DULCERIA</option>
             <option value="BISUTERIA">BISUTERIA</option>
         </select><br>
-        <label>Entradas:</label>
-        <input type="number" class="form-control" th:field="*{entradas}"><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('entradas')}" th:errors="*{entradas}"></div>
 
-        <label>Salidas:</label>
-        <input type="number" class="form-control" th:field="*{salidas}"><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('salidas')}" th:errors="*{salidas}"></div>
+        <input hidden type="text" class="form-control" th:field="*{cantidad}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
 
         <label>Descripción:</label>
-        <input type="text" class="form-control" th:field="*{descripcion}"><br>
-        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{name}"></div>
+        <input type="text" class="form-control" th:field="*{descripcion}" required><br>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+
 
         <div class="form-group">
             <label class="form-label">Selecciona un producto</label>
@@ -48,6 +44,7 @@
         </div>
     </form>
 </div>
+    </div>
     </div>
 </div>
 

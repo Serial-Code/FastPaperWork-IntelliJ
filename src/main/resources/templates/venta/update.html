@@ -10,14 +10,20 @@
 <div layout:fragment="dashboard">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
-    <h3>Actualizar Venta</h3>
+    <h3>Confirmar venta</h3>
             <br>
     <form th:action="@{'/venta/update/' + ${venta.id}}" th:object="${venta}" method="post">
-        <label>Fecha:</label>
-        <input type="date" class="form-control" th:field="*{fecha}"><br>
+
+        <select id="usuario" th:field="*{user}" class="form-control" hidden>
+            <th:block th:each="user: ${users}">
+                <option th:text="${user.firstName}" th:value="${user.id}"></option>
+            </th:block>
+        </select>
+
+
+        <input type="date" class="form-control" th:field="*{fecha}" hidden><br>
         <div class="form-group">
-            <label class="form-label">Selecciona un producto</label>
-            <select id="product" th:field="*{product}" class="form-control" required>
+            <select id="product" th:field="*{product}" class="form-control" required hidden>
                 <th:block th:each="product: ${products}">
                     <option th:text="${product.name}" th:value="${product.id}"></option>
                 </th:block>
@@ -25,14 +31,20 @@
             <div class="alert alert-warning" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></div>
         </div>
 
-        <label>cantidad:</label>
-        <input type="number" class="form-control" th:field="*{cantidad}"><br>
-        <label>total:</label>
-        <input type="number" class="form-control" th:field="*{total}"><br>
+
+        <input type="number" class="form-control" th:field="*{cantidad}" hidden><br>
+
+        <input type="number" class="form-control" th:field="*{total}" hidden><br>
+
+        <select type="date" class="form-control" th:field="*{estado}" >
+            <option value="CONFIRMADO">CONFIRMAR</option>
+        </select>
+
+        <input type="text" class="form-control" th:field="*{direccion}" hidden><br>
+
 
         <div class="form-group">
-            <label class="form-label">Selecciona una forma de pago</label>
-            <select id="forma_de_pago" th:field="*{forma_de_pago}" class="form-control" required>
+            <select id="forma_de_pago" th:field="*{forma_de_pago}" class="form-control" required hidden>
                 <th:block th:each="forma_de_pago: ${forma_de_pagos}">
                     <option th:text="${forma_de_pago.forma_de_pago}" th:value="${forma_de_pago.idforma_de_pago}"></option>
                 </th:block>

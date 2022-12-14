@@ -28,6 +28,12 @@ public class Venta {
     @Column
     private Double total;
 
+    @Column(name = "estado")
+    private String estado;
+
+    @Column(name = "direccion")
+    private String direccion;
+
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonBackReference

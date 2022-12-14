@@ -28,9 +28,6 @@ public class Product {
     @Column(length = 30, nullable = false)
     private String category;
 
-    @Column
-    private int quantity;
-
     @NotEmpty(message = "El campo estado no puede ser vacio")
     @Column(length = 40, nullable = false)
     private String state;

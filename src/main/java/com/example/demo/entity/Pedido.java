@@ -24,22 +24,25 @@ public class Pedido {
     @Column(name = "idpedido", unique = true)
     private Long id;
 
-
     @Column
     private Date fecha;
 
-    @Min(value = 1, message = "Valor minimo 1")
-    @Column(name = "cantidad_total")
+
+    @Column(name = "cantidad")
     private int cantidad;
+
+    @Column(name = "total")
+    private Double total;
+
+    @Column(name = "estado")
+    private String estado;
 
     @NotEmpty(message = "El campo direccion no puede ser vacio")
     @Column(length = 50, nullable = false)
     private String direccion;
 
     @ManyToOne
-    @NotNull(message = "Seleccionar un usuario")
     @JoinColumn(name = "id")
-    @JsonBackReference
     private Product product;
 
     @ManyToOne

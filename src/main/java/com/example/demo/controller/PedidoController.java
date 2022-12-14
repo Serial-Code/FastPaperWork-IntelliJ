@@ -47,7 +47,6 @@ public class PedidoController {
         return "pedido/allpedido";
     }
 
-
     @GetMapping("/pedido/all")
     public String getPedidos(Model model){
 
@@ -76,6 +75,7 @@ public class PedidoController {
 
     }
 
+
     @GetMapping("/pedido/new")
     public String showNewPedido(Model model){
         model.addAttribute("pedido", new Pedido());
@@ -99,6 +99,18 @@ public class PedidoController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User loginUser = (User) authentication.getPrincipal();
 
+
+        if (pedido.getCantidad() < 1) {
+            result.hasErrors();
+            model.addAttribute("products", productService.getProducts());
+            model.addAttribute("forma_de_pagos", forma_de_pagoService.getForma_de_pagos());
+            model .addAttribute("userss", userServices.getUsers());
+            return "pedido/new";
+        } else {
+            pedido.setTotal(pedido.getCantidad() * pedido.getProduct().getPrice());
+        }
+
+
         pedido.setUser(loginUser);
         pedidoService.savePedido(pedido);
         return "redirect:/pedido/all";
@@ -120,15 +132,18 @@ public class PedidoController {
             model.addAttribute("forma_de_pagos", forma_de_pagoService.getForma_de_pagos());
             model .addAttribute("userss", userServices.getUsers());
 
-            return "pedido/new";
+            return "pedido/update";
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User loginUser = (User) authentication.getPrincipal();
 
+        pedido.setTotal(pedido.getCantidad() * pedido.getProduct().getPrice());
+
         pedido.setUser(loginUser);
 
         pedido.setId(id);
+
         pedidoService.updatePedido(pedido);
         return "redirect:/pedido/all";
     }

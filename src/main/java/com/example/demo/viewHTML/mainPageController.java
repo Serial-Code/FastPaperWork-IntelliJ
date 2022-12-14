@@ -32,9 +32,24 @@ public class mainPageController {
         return "MainPages/shoppingCar";
     }
 
-    @GetMapping("/homeAdmin")
+    @GetMapping("/administrador")
     public String homePageA(){
         return "admin/indexCuerpo";
+    }
+
+    @GetMapping("/usuario")
+    public String homePageU(){
+        return "user/indexCuerpoC";
+    }
+
+    @GetMapping("/detalle/administrador/dashboard")
+    public String detailAdmin(){
+        return "admin/dashboard";
+    }
+
+    @GetMapping("/detalle/usuario/dashboard")
+    public String detailsUser(){
+        return "user/dashboard";
     }
 
 }

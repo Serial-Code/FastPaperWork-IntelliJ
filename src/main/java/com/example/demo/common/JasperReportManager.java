@@ -5,7 +5,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class JasperReportManager {
 
     private static final String REPORT_FOLDER = "reports";
-    private static final String JASPER = ".jasper";
+    private static final  String JASPER = ".jasper";
 
     public ByteArrayOutputStream export(String fileName, String tipoReporte, Map<String, Object> params,
                                         Connection con) throws JRException, IOException {
@@ -33,8 +33,8 @@ public class JasperReportManager {
 
         InputStream inputStream = resource.getInputStream();
         JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, con);
-        if(tipoReporte.equalsIgnoreCase(TipoReporteEnum.EXCEL.toString())) {
-            JRXlsExporter exporter = new JRXlsExporter();
+        if (tipoReporte.equalsIgnoreCase(TipoReporteEnum.EXCEL.toString())) {
+            JRXlsxExporter exporter = new JRXlsxExporter();
             exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
             exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(stream));
             SimpleXlsxReportConfiguration configuration = new SimpleXlsxReportConfiguration();
@@ -47,7 +47,6 @@ public class JasperReportManager {
         }
 
         return stream;
-
     }
 
 }

@@ -31,6 +31,7 @@
       <th>Fecha</th>
       <th>Producto</th>
       <th>Cantidad</th>
+      <th>Precio total</th>
       <th>Direccion</th>
       <th>Forma de pago</th>
       <th>Acciones</th>
@@ -43,6 +44,7 @@
       <td th:text="${pedido.fecha}"></td>
       <td th:text="${pedido.product.name}"></td>
       <td th:text="${pedido.cantidad}"></td>
+      <td th:text="${pedido.total}"></td>
       <td th:text="${pedido.direccion}"></td>
       <td th:text="${pedido.forma_de_pago.forma_de_pago}"></td>
       <td>

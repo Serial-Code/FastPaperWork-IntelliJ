@@ -53,8 +53,10 @@ public class InventarioController {
     }
 
     @PostMapping("/inventario/save")
-    public String newInventario(@Valid Inventario inventario, BindingResult result){
+    public String newInventario(@Valid Inventario inventario, BindingResult result, Model model){
         if (result.hasErrors()){
+            model.addAttribute("products", productService.getProducts());
+
             return "/inventario/new";
         }
         inventarioService.saveInventario(inventario);
@@ -69,8 +71,17 @@ public class InventarioController {
     }
 
     @PostMapping("/inventario/update/{id}")
-    public String updateInventario(@PathVariable Integer id,Inventario inventario){
+    public String updateInventario(@PathVariable Integer id,@Valid Inventario inventario, BindingResult result, Model model){
+        if (result.hasErrors()){
+            model.addAttribute("products", productService.getProducts());
+
+            return "inventario/update";
+        }
+
+
+
         inventario.setId(id);
+
         inventarioService.updateInventario(inventario);
         return "redirect:/inventario/all";
     }
@@ -80,6 +91,12 @@ public class InventarioController {
         inventarioService.deleteInventario(id);
         return "redirect:/inventario/all";
     }
+
+    @GetMapping("/inventario/categoria/report")
+    public String reporteInventario(){
+        return "inventario/report";
+    }
+
 
     @GetMapping("/inventario/report")
     public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
