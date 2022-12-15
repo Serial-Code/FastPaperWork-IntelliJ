@@ -80,16 +80,9 @@ public class ProductViewController {
 
     @PostMapping("/product/update/{id}")
     public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result, Model model) {
-<<<<<<< HEAD
-    if (result.hasErrors()){
-        model.addAttribute("proveedores", proveedorService.getProveedores());
-        return "/product/new";
-    }
-=======
         if (result.hasErrors()) {
             model.addAttribute("proveedores", proveedorService.getProveedores());
         }
->>>>>>> a3e7a87c7aa3fe41ac9787f5bd008bc6c818d6c6
         product.setId(id);
         productService.updateProduct(product);
         return "redirect:/product/all";
@@ -135,19 +128,19 @@ public class ProductViewController {
     @GetMapping("/product_dolar/report")
     public ResponseEntity<Resource> download_precio_dolar(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
 
-            ReportePrecioDolarDTO dto = reportePrecioDolarService.obtenerReportePrecioDolar(params);
+        ReportePrecioDolarDTO dto = reportePrecioDolarService.obtenerReportePrecioDolar(params);
 
-            InputStreamResource streamResource = new InputStreamResource(dto.getStream());
+        InputStreamResource streamResource = new InputStreamResource(dto.getStream());
 
-            MediaType mediaType = null;
-            if (params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())) {
-                mediaType = MediaType.APPLICATION_OCTET_STREAM;
-            } else {
-                mediaType = MediaType.APPLICATION_PDF;
-            }
+        MediaType mediaType = null;
+        if (params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())) {
+            mediaType = MediaType.APPLICATION_OCTET_STREAM;
+        } else {
+            mediaType = MediaType.APPLICATION_PDF;
+        }
 
-            return ResponseEntity.ok().header("Content-Disposition", "inline; filename=\"" + dto.getFileName() + "\"")
-                    .contentLength(dto.getLength()).contentType(mediaType).body(streamResource);
+        return ResponseEntity.ok().header("Content-Disposition", "inline; filename=\"" + dto.getFileName() + "\"")
+                .contentLength(dto.getLength()).contentType(mediaType).body(streamResource);
 
 
     }

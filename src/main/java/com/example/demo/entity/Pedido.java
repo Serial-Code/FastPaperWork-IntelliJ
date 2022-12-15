@@ -29,7 +29,7 @@ public class Pedido {
     @Column
     private Date fecha;
 
-
+    @Min(value = 1, message = "Minimo 1 cantidad")
     @Column(name = "cantidad")
     private int cantidad;
 
